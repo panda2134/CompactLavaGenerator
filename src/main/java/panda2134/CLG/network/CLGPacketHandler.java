@@ -6,11 +6,11 @@ import cpw.mods.fml.relauncher.Side;
 import panda2134.CLG.util.ModValue;
 
 public class CLGPacketHandler {
-	public static final SimpleNetworkWrapper INSTANCE=NetworkRegistry.INSTANCE
-											.newSimpleChannel(ModValue.modid);
+	public static SimpleNetworkWrapper INSTANCE;
 	
-	public CLGPacketHandler() {
-		// TODO Auto-generated constructor stub
+	public static void init() {
+		INSTANCE=NetworkRegistry.INSTANCE
+				.newSimpleChannel(ModValue.modid);
 		INSTANCE.registerMessage(CLGMultiblockMessage.CLGMultiblockMessageHandler.class,
 				CLGMultiblockMessage.class, 0, Side.CLIENT);
 	}

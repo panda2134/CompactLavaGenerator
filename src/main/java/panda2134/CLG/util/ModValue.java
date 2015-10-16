@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockStaticLiquid;
@@ -23,9 +24,13 @@ public class ModValue {
 	public static final String casingName="CLGCasing";
 	public static final String hammerName="CLGHammer";
 	public static final String pumpName="CLGLavaPump";
+	public static boolean isServer;
+	public static boolean isClient;
 	public static final List clgBlockList = new ArrayList();
 	
 	public static void init() {
+		isServer=FMLCommonHandler.instance().getEffectiveSide().isServer();
+		isClient=FMLCommonHandler.instance().getEffectiveSide().isClient();
 		clgBlockList.add(CLGController.class);
 		clgBlockList.add(CLGCasing.class);
 	}

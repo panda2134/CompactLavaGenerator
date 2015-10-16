@@ -49,9 +49,12 @@ public class CLGMultiblockMessage implements IMessage {
 				MessageContext ctx) {
 			EntityPlayerMP player=ctx.getServerHandler().playerEntity;
 			if(message.formed){
+				/*
 				TileEntityCLGController tile=(TileEntityCLGController)Minecraft.getMinecraft()
 						.theWorld.getTileEntity(message.x, message.y, message.z);
 				tile.formed=true;
+				*/
+				System.out.println("client:formed");
 			}
 			return null;
 		}

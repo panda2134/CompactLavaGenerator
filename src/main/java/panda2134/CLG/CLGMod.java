@@ -1,5 +1,6 @@
 package panda2134.CLG;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -9,6 +10,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.init.Items;
 import panda2134.CLG.init.TileEntities;
+import panda2134.CLG.network.CLGPacketHandler;
 import panda2134.CLG.proxy.CommonProxy;
 import panda2134.CLG.proxy.Proxy;
 import panda2134.CLG.util.ModValue;
@@ -31,6 +33,8 @@ public class CLGMod {
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 		TileEntities.init();
+		if(ModValue.isServer)
+			CLGPacketHandler.init();
 		proxy.init(event);
 	}
 	@EventHandler
