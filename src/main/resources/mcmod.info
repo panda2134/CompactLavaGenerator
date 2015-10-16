@@ -1,0 +1,15 @@
+[
+{
+  "modid": "tanktest",
+  "name": "Tank Test Mod",
+  "description": "A Test mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["panda_2134"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
