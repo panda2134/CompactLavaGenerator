@@ -26,8 +26,11 @@ public class CLGMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		ModValue.init();
+		CLGPacketHandler.init();
+		System.out.println("server?"+ModValue.isServer);
 		Blocks.init();
 		Items.init();
+		
 		proxy.preInit(event);
 	}
 	@EventHandler
@@ -38,8 +41,7 @@ public class CLGMod {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		CLGPacketHandler.init();
-		System.out.println("server?"+ModValue.isServer);
+		
 		proxy.postInit(event);
 	}
 }

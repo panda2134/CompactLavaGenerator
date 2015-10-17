@@ -11,7 +11,7 @@ public class CLGPacketHandler {
 	public static void init() {
 		System.out.println("INIT PACKET");
 		INSTANCE=NetworkRegistry.INSTANCE
-				.newSimpleChannel(ModValue.modid);
+				.newSimpleChannel(ModValue.modid.toLowerCase());
 		INSTANCE.registerMessage(CLGMultiblockMessage.CLGMultiblockMessageHandler.class,
 				CLGMultiblockMessage.class, 0, Side.CLIENT);
 	}
