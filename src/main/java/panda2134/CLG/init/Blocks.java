@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import panda2134.CLG.block.CLGCasing;
 import panda2134.CLG.block.CLGController;
 import panda2134.CLG.block.CLGLavaPump;
-import panda2134.CLG.util.ModValue;
+import panda2134.CLG.util.CLGReference;
 import net.minecraft.block.Block;
 
 public class Blocks {
@@ -15,8 +15,8 @@ public class Blocks {
 		blockController=new CLGController();
 		blockCasing=new CLGCasing();
 		blockLavaPump=new CLGLavaPump();
-		GameRegistry.registerBlock(blockController,ModValue.controllerName);
-		GameRegistry.registerBlock(blockCasing, ModValue.casingName);
-		GameRegistry.registerBlock(blockLavaPump, ModValue.pumpName);
+		GameRegistry.registerBlock(blockController,CLGReference.controllerName);
+		GameRegistry.registerBlock(blockCasing, CLGReference.casingName);
+		GameRegistry.registerBlock(blockLavaPump, CLGReference.pumpName);
 	}
 }

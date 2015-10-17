@@ -1,13 +1,14 @@
 [
 {
-  "modid": "tanktest",
-  "name": "Tank Test Mod",
-  "description": "A Test mod.",
+  "modid": "CLG",
+  "name": "Compact Lava Generator",
+  "description": "Redefine your lava generators.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["panda_2134"],
+  "credits": "panda_2134, ueyudiud",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

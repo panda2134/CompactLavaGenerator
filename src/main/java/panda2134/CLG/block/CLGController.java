@@ -3,7 +3,7 @@ package panda2134.CLG.block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import panda2134.CLG.tileentity.TileEntityCLGController;
-import panda2134.CLG.util.ModValue;
+import panda2134.CLG.util.CLGReference;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -20,9 +21,9 @@ public class CLGController extends Block implements ITileEntityProvider{
 	
 	public CLGController(){
 		super(Material.iron);
-		this.setBlockName(ModValue.controllerName);
-		this.setBlockTextureName(ModValue.modid+":"
-						+ModValue.controllerName);
+		this.setBlockName(CLGReference.controllerName);
+		this.setBlockTextureName(CLGReference.modid+":"
+						+CLGReference.controllerName);
 		this.setStepSound(soundTypeMetal);
 		this.setHardness(3);
 		this.setResistance(6);
@@ -32,8 +33,8 @@ public class CLGController extends Block implements ITileEntityProvider{
 	public void registerBlockIcons(IIconRegister reg){
 		icons[0]=reg.registerIcon(this.textureName+"_front_off");
 		icons[1]=reg.registerIcon(this.textureName+"_front_on");
-		icons[2]=reg.registerIcon(ModValue.modid+":"
-									+ModValue.casingName);
+		icons[2]=reg.registerIcon(CLGReference.modid+":"
+									+CLGReference.casingName);
 	}
 	
 	@Override
@@ -56,21 +57,35 @@ public class CLGController extends Block implements ITileEntityProvider{
 	
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack){
-		double deltaX=entity.posX-x;
-		double deltaZ=entity.posZ-z;
-		double angle=(entity.rotationYaw+45.0)%360;
-		int face=0;
-		if(angle>0.0 && angle<=90.0)
-			face=2;
-		else if(angle>90.0 && angle<=180.0)
-			face=5;
-		else if(angle>180.0 && angle<=270.0)
-			face=3;
-		else
-			face=4;
-		world.setBlockMetadataWithNotify(x, y, z, face, 2);
-	}
+		int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
+        if (l == 0)
+        {
+            world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+        }
+
+        if (l == 1)
+        {
+            world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+        }
+
+        if (l == 2)
+        {
+            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+        }
+
+        if (l == 3)
+        {
+            world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+        }
+	}
+	
+	@Override
+	public void onNeighborBlockChange(World world,int x,int y,int z,
+													Block blk){
+		
+	}
+	
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
 		return new TileEntityCLGController();

@@ -76,11 +76,11 @@ public class MultiblockHelper {
 							}
 						}
 						if(pattern[y][x][z]!="B" && pattern[y][x][z]!="A"){
-							if(!ModValue.isSpecialBlkForMulti(pattern[y][x][z], blk))
+							if(!CLGReference.isSpecialBlkForMulti(pattern[y][x][z], blk))
 								return false;
 						}
 						if(pattern[y][x][z]=="B" || pattern[y][x][z]=="A"){
-							if(ModValue.isSpecialBlkForMulti(pattern[y][x][z], blk))
+							if(CLGReference.isSpecialBlkForMulti(pattern[y][x][z], blk))
 								return false;
 						}
 						if(blockList.contains(blk.getClass()) && ((x==relX && y==relY && z==relZ && blk.getClass()==mainblk.getClass())||(x!=relX && y!=relY && z!=relZ && blk.getClass()!=mainblk.getClass())) ){

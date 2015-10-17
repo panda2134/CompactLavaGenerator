@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.network.CLGMultiblockMessage;
 import panda2134.CLG.network.CLGPacketHandler;
-import panda2134.CLG.util.ModValue;
+import panda2134.CLG.util.CLGReference;
 import panda2134.CLG.util.MultiblockHelper;
 import scala.collection.immutable.List;
 import net.minecraft.client.Minecraft;
@@ -45,16 +45,19 @@ public class TileEntityCLGController extends TileEntity {
 			{{"B","B","B"},{"B","B","B"},{"B","B","B"}}
 	};
 		World world=this.getWorldObj();
-		boolean state=MultiblockHelper.checkPattern(pattern, world, xCoord, yCoord, zCoord, 1, 1, 0, ModValue.clgBlockList,Blocks.blockController);
+		boolean state=MultiblockHelper.checkPattern(pattern, world, xCoord, yCoord, zCoord, 1, 1, 0, CLGReference.clgBlockList,Blocks.blockController);
 		return state;
 	}
 	
 	@Override
 	public void updateEntity(){
+		updateState();
+	}
+	
+	public void updateState(){
 		if(this.getWorldObj().isRemote) return;
 		formed=this.isStructureComplete();
 		//TODO:change the way to checking when block updates
-		this.markDirty();
 		//send to client
 		CLGPacketHandler.INSTANCE.
 		sendToAll(new CLGMultiblockMessage(formed,xCoord,yCoord,zCoord));

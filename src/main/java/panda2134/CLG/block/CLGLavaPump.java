@@ -1,6 +1,6 @@
 package panda2134.CLG.block;
 
-import panda2134.CLG.util.ModValue;
+import panda2134.CLG.util.CLGReference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,9 +12,9 @@ public class CLGLavaPump extends Block {
 	
 	public CLGLavaPump() {
 		super(Material.iron);
-		this.setBlockName(ModValue.pumpName);
-		this.setBlockTextureName(ModValue.modid+":"
-						+ModValue.pumpName);
+		this.setBlockName(CLGReference.pumpName);
+		this.setBlockTextureName(CLGReference.modid+":"
+						+CLGReference.pumpName);
 		this.setStepSound(soundTypeMetal);
 		this.setHardness(3);
 		this.setResistance(6);
@@ -23,7 +23,7 @@ public class CLGLavaPump extends Block {
 	@Override
 	public void registerBlockIcons(IIconRegister reg){
 		icons[0]=reg.registerIcon(this.getTextureName());
-		icons[1]=reg.registerIcon(ModValue.modid+":"+ModValue.casingName);
+		icons[1]=reg.registerIcon(CLGReference.modid+":"+CLGReference.casingName);
 	}
 	
 	@Override

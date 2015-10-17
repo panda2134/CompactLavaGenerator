@@ -13,9 +13,9 @@ import panda2134.CLG.init.TileEntities;
 import panda2134.CLG.network.CLGPacketHandler;
 import panda2134.CLG.proxy.CommonProxy;
 import panda2134.CLG.proxy.Proxy;
-import panda2134.CLG.util.ModValue;
+import panda2134.CLG.util.CLGReference;
 
-@Mod(modid=ModValue.modid,name=ModValue.modName,version=ModValue.version)
+@Mod(modid=CLGReference.modid,name=CLGReference.modName,version=CLGReference.version)
 public class CLGMod {
 	
 	public static CLGMod INSTANCE=new CLGMod();
@@ -25,7 +25,7 @@ public class CLGMod {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		ModValue.init();
+		CLGReference.init();
 		Blocks.init();
 		Items.init();
 		

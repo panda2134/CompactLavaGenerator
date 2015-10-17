@@ -1,7 +1,7 @@
 package panda2134.CLG.network;
 
 import panda2134.CLG.tileentity.TileEntityCLGController;
-import panda2134.CLG.util.ModValue;
+import panda2134.CLG.util.CLGReference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
