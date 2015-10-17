@@ -1,7 +1,9 @@
 package panda2134.CLG.network;
 
 import panda2134.CLG.tileentity.TileEntityCLGController;
+import panda2134.CLG.util.ModValue;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
@@ -47,7 +49,8 @@ public class CLGMultiblockMessage implements IMessage {
 		@Override
 		public IMessage onMessage(CLGMultiblockMessage message,
 				MessageContext ctx) {
-			EntityPlayerMP player=ctx.getServerHandler().playerEntity;
+			System.out.println("onMessage"+ModValue.isServer);
+			EntityPlayer player=ctx.getServerHandler().playerEntity;
 			if(message.formed){
 				/*
 				TileEntityCLGController tile=(TileEntityCLGController)Minecraft.getMinecraft()

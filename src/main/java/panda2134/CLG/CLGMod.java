@@ -33,13 +33,13 @@ public class CLGMod {
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 		TileEntities.init();
-		if(ModValue.isServer)
-			CLGPacketHandler.init();
+		
 		proxy.init(event);
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
+		CLGPacketHandler.init();
+		System.out.println("server?"+ModValue.isServer);
 		proxy.postInit(event);
 	}
 }

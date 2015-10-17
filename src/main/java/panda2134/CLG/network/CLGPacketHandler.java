@@ -9,6 +9,7 @@ public class CLGPacketHandler {
 	public static SimpleNetworkWrapper INSTANCE;
 	
 	public static void init() {
+		System.out.println("INIT PACKET");
 		INSTANCE=NetworkRegistry.INSTANCE
 				.newSimpleChannel(ModValue.modid);
 		INSTANCE.registerMessage(CLGMultiblockMessage.CLGMultiblockMessageHandler.class,
