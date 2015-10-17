@@ -26,8 +26,6 @@ public class CLGMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		ModValue.init();
-		CLGPacketHandler.init();
-		System.out.println("server?"+ModValue.isServer);
 		Blocks.init();
 		Items.init();
 		
@@ -36,7 +34,7 @@ public class CLGMod {
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 		TileEntities.init();
-		
+		CLGPacketHandler.init();
 		proxy.init(event);
 	}
 	@EventHandler

@@ -53,8 +53,10 @@ public class TileEntityCLGController extends TileEntity {
 	public void updateEntity(){
 		if(this.getWorldObj().isRemote) return;
 		formed=this.isStructureComplete();
+		//TODO:change the way to checking when block updates
+		this.markDirty();
 		//send to client
 		CLGPacketHandler.INSTANCE.
-		sendToAll(new CLGMultiblockMessage(true,xCoord,yCoord,zCoord));
+		sendToAll(new CLGMultiblockMessage(formed,xCoord,yCoord,zCoord));
 	}
 }

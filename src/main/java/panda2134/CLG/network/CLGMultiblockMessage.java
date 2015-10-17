@@ -49,11 +49,14 @@ public class CLGMultiblockMessage implements IMessage {
 		@Override
 		public IMessage onMessage(CLGMultiblockMessage message,
 				MessageContext ctx) {
-			System.out.println("onMessage"+ModValue.isServer);
+			TileEntityCLGController tile=(TileEntityCLGController)Minecraft.getMinecraft()
+					.theWorld.getTileEntity(message.x, message.y, message.z);
+			if(tile == null)
+				return null;
 			if(message.formed){
-				TileEntityCLGController tile=(TileEntityCLGController)Minecraft.getMinecraft()
-						.theWorld.getTileEntity(message.x, message.y, message.z);
 				tile.formed=true;
+			}else{
+				tile.formed=false;
 			}
 			return null;
 		}
