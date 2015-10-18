@@ -13,6 +13,7 @@ import net.minecraft.block.material.Material;
 import panda2134.CLG.block.CLGCasing;
 import panda2134.CLG.block.CLGController;
 import panda2134.CLG.block.CLGLavaPump;
+import panda2134.CLG.init.Blocks;
 
 
 
@@ -26,13 +27,10 @@ public class CLGReference {
 	public static final String pumpName="CLGLavaPump";
 	public static boolean isServer;
 	public static boolean isClient;
-	public static final List clgBlockList = new ArrayList();
 	
 	public static void init() {
 		isServer=FMLCommonHandler.instance().getEffectiveSide().isServer();
 		isClient=FMLCommonHandler.instance().getEffectiveSide().isClient();
-		clgBlockList.add(CLGController.class);
-		clgBlockList.add(CLGCasing.class);
 	}
 	
 	public static boolean isSpecialBlkForMulti(String str,Block blk){
@@ -40,6 +38,14 @@ public class CLGReference {
 			return true;
 		else if(blk.getMaterial()==Material.lava)
 				return true;
+		return false;
+	}
+	
+	public static boolean isCLGMultiBlock(String str){
+		if(str.equals("tile."+controllerName))
+			return true;
+		else if(str.equals("tile."+casingName))
+			return true;
 		return false;
 	}
 }

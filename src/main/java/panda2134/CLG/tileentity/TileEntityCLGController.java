@@ -6,7 +6,7 @@ import panda2134.CLG.init.Blocks;
 import panda2134.CLG.network.CLGMultiblockMessage;
 import panda2134.CLG.network.CLGPacketHandler;
 import panda2134.CLG.util.CLGReference;
-import panda2134.CLG.util.MultiblockHelper;
+import panda2134.CLG.util.GeneratorMultiblockHelper;
 import scala.collection.immutable.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityCLGController extends TileEntity {
-	public double generating,outputLimit,stroage;
+	public double generating,outputLimit,output,stroage;
 	public boolean formed;
 	
 	@Override
@@ -23,6 +23,7 @@ public class TileEntityCLGController extends TileEntity {
 		super.readFromNBT(nbt);
 		generating=nbt.getDouble("generating");
 		outputLimit=nbt.getDouble("outputLimit");
+		output=nbt.getDouble("output");
 		stroage=nbt.getDouble("stroage");
 		formed=nbt.getBoolean("formed");
 	}
@@ -32,6 +33,7 @@ public class TileEntityCLGController extends TileEntity {
 		super.writeToNBT(nbt);
 		nbt.setDouble("generating",generating);
 		nbt.setDouble("outputLimit",outputLimit);
+		nbt.setDouble("output", output);
 		nbt.setDouble("stroage",stroage);
 		nbt.setBoolean("formed", formed);
 	}
@@ -45,7 +47,10 @@ public class TileEntityCLGController extends TileEntity {
 			{{"B","B","B"},{"B","B","B"},{"B","B","B"}}
 	};
 		World world=this.getWorldObj();
-		boolean state=MultiblockHelper.checkPattern(pattern, world, xCoord, yCoord, zCoord, 1, 1, 0, CLGReference.clgBlockList,Blocks.blockController);
+		boolean state=
+				GeneratorMultiblockHelper.checkPattern(pattern, world, xCoord, yCoord, zCoord,
+						1, 1, 0,
+						Blocks.blockController.getUnlocalizedName());
 		return state;
 	}
 	
@@ -57,9 +62,12 @@ public class TileEntityCLGController extends TileEntity {
 	public void updateState(){
 		if(this.getWorldObj().isRemote) return;
 		formed=this.isStructureComplete();
-		//TODO:change the way to checking when block updates
-		//send to client
 		CLGPacketHandler.INSTANCE.
 		sendToAll(new CLGMultiblockMessage(formed,xCoord,yCoord,zCoord));
+		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
+		
+		
+		//((this.outputLimit)>(this.generating)?this.generating:this.outputLimit))
+		
 	}
 }

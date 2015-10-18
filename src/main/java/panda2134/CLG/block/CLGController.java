@@ -7,6 +7,7 @@ import panda2134.CLG.util.CLGReference;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -46,6 +47,8 @@ public class CLGController extends Block implements ITileEntityProvider{
 	@Override
     public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z,
             int side) {
+		//TODO:remove this
+		Minecraft.getMinecraft().theWorld.notifyBlockChange(x, y, z, iBlockAccess.getBlock(x, y, z));
 		int face=iBlockAccess.getBlockMetadata(x, y, z);
 		boolean formed=((TileEntityCLGController)(iBlockAccess.getTileEntity(x, y, z))).formed;
 		if(!formed){

@@ -34,9 +34,8 @@ public class CLGHammer extends Item {
 		player.addChatComponentMessage(new ChatComponentText("Structure Incomplete!"));
 		}else{
 		player.addChatMessage(new ChatComponentText("Generating:"+te.generating+"     "
-		+"Output:"+((te.outputLimit)>(te.generating)?te.generating:te.outputLimit)));
+		+"Output:"+te.output));
 		}
-		CLGPacketHandler.INSTANCE.sendToAll(new CLGMultiblockMessage(formed, x, y, z));
 		return true;
 	}
 }
