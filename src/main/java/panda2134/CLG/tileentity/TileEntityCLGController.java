@@ -69,18 +69,21 @@ public class TileEntityCLGController extends TileEntityBase {
 	
 	@Override
 	public void updateEntity(){
-		if(worldObj.isRemote)
-			return;		
-		updateState();
-		//enable generators if formed
-		
-		//disable generators if not formed
-		
-		//set output limit
-		
-		//add generating to storage
-		
-		//output and set this.output
+		if(worldObj.isRemote){
+			worldObj.markBlockRangeForRenderUpdate(
+					xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);	
+		}else{
+			updateState();
+			//enable generators if formed
+			
+			//disable generators if not formed
+			
+			//set output limit
+			
+			//add generating to storage
+			
+			//output and set this.output
+		}
 	}
 	
 	public void updateState(){
@@ -99,6 +102,7 @@ public class TileEntityCLGController extends TileEntityBase {
 		else
 			return;
 		*/
+		
 		CLGPacketHandler.INSTANCE
 		.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
 												new TargetPoint(worldObj.provider.dimensionId,
