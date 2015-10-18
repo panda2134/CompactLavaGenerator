@@ -11,6 +11,9 @@ import panda2134.CLG.util.GeneratorMultiblockHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
@@ -90,7 +93,7 @@ public class TileEntityCLGController extends TileEntityBase {
 		if(worldObj.isRemote)
 			return;
 		formed=this.isStructureComplete();
-		this.sendChange();
+		//this.sendChange();
 
 	}
 	
@@ -109,4 +112,21 @@ public class TileEntityCLGController extends TileEntityBase {
 														xCoord, yCoord, zCoord, 64));
 		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
 	}
+	 @Override
+	 public Packet getDescriptionPacket() 
+	 {
+	     NBTTagCompound tagCompound = new NBTTagCompound();
+	         writeToNBT(tagCompound);
+	         return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tagCompound);
+	 }
+	    
+	    @Override
+	    //Other Forge release use Packet132TileEntityData instead of S35PacketUpdateTileEntity
+	 public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) 
+	     {
+	     //read the packet data from NBT 
+	         readFromNBT(packet.func_148857_g());
+	         //Update the block render in order to update the client texture
+	         Minecraft.getMinecraft().renderGlobal.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
+	 }
 }
