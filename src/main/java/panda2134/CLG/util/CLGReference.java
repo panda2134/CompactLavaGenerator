@@ -23,6 +23,8 @@ public class CLGReference {
 	public static final String version="0.0.1";
 	public static final String controllerName="CLGController";
 	public static final String casingName="CLGCasing";
+	public static final String generatorName="CLGLavaGenerator";
+	public static final String hatchName="CLGEnergyOutput";
 	public static final String hammerName="CLGHammer";
 	public static final String pumpName="CLGLavaPump";
 	public static boolean isServer;
@@ -45,6 +47,8 @@ public class CLGReference {
 		if(str.equals("tile."+controllerName))
 			return true;
 		else if(str.equals("tile."+casingName))
+			return true;
+		else if(str.equals("tile."+generatorName))
 			return true;
 		return false;
 	}

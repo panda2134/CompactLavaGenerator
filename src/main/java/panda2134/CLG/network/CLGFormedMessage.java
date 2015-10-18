@@ -1,5 +1,6 @@
 package panda2134.CLG.network;
 
+import panda2134.CLG.tileentity.TileEntityBase;
 import panda2134.CLG.tileentity.TileEntityCLGController;
 import panda2134.CLG.util.CLGReference;
 import net.minecraft.client.Minecraft;
@@ -12,16 +13,16 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class CLGMultiblockMessage implements IMessage {
+public class CLGFormedMessage implements IMessage {
 
-	public CLGMultiblockMessage() {
+	public CLGFormedMessage() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	private boolean formed;
 	private int x,y,z;
 	
-	public CLGMultiblockMessage(boolean formed,int x,int y,int z){
+	public CLGFormedMessage(boolean formed,int x,int y,int z){
 		this.formed=formed;
 		this.x=x;
 		this.y=y;
@@ -44,12 +45,12 @@ public class CLGMultiblockMessage implements IMessage {
 		buf.writeInt(z);
 	}
 	
-	public static class CLGMultiblockMessageHandler implements IMessageHandler<CLGMultiblockMessage,IMessage>{
+	public static class CLGFormedMessageHandler implements IMessageHandler<CLGFormedMessage,IMessage>{
 
 		@Override
-		public IMessage onMessage(CLGMultiblockMessage message,
+		public IMessage onMessage(CLGFormedMessage message,
 				MessageContext ctx) {
-			TileEntityCLGController tile=(TileEntityCLGController)Minecraft.getMinecraft()
+			TileEntityBase tile=(TileEntityBase)Minecraft.getMinecraft()
 					.theWorld.getTileEntity(message.x, message.y, message.z);
 			if(tile == null)
 				return null;

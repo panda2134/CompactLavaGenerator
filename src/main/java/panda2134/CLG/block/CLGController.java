@@ -3,6 +3,7 @@ package panda2134.CLG.block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import panda2134.CLG.tileentity.TileEntityCLGController;
+import panda2134.CLG.util.BlockFaceMetaHelper;
 import panda2134.CLG.util.CLGReference;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -10,8 +11,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -45,9 +48,9 @@ public class CLGController extends Block implements ITileEntityProvider{
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z,
             int side) {
-		//TODO:remove this
 		Minecraft.getMinecraft().theWorld.notifyBlockChange(x, y, z, iBlockAccess.getBlock(x, y, z));
 		int face=iBlockAccess.getBlockMetadata(x, y, z);
 		boolean formed=((TileEntityCLGController)(iBlockAccess.getTileEntity(x, y, z))).formed;
@@ -60,28 +63,10 @@ public class CLGController extends Block implements ITileEntityProvider{
 	
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack){
-		int l = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-
-        if (l == 0)
-        {
-            world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-        }
-
-        if (l == 1)
-        {
-            world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-        }
-
-        if (l == 2)
-        {
-            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-        }
-
-        if (l == 3)
-        {
-            world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-        }
+		BlockFaceMetaHelper.setBlockFaceMeta(world, x, y, z, entity);
 	}
+	
+	
 	
 	@Override
 	public void onNeighborBlockChange(World world,int x,int y,int z,

@@ -11,8 +11,8 @@ public class CLGPacketHandler {
 	public static void init() {
 		INSTANCE=NetworkRegistry.INSTANCE
 				.newSimpleChannel(CLGReference.modid.toLowerCase());
-		INSTANCE.registerMessage(CLGMultiblockMessage.CLGMultiblockMessageHandler.class,
-				CLGMultiblockMessage.class, 0, Side.CLIENT);
+		INSTANCE.registerMessage(CLGFormedMessage.CLGFormedMessageHandler.class,
+				CLGFormedMessage.class, 0, Side.CLIENT);
 	}
 	
 }
