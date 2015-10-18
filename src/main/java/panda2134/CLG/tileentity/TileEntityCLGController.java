@@ -110,6 +110,7 @@ public class TileEntityCLGController extends TileEntityBase {
 		.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
 												new TargetPoint(worldObj.provider.dimensionId,
 														xCoord, yCoord, zCoord, 64));
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
 	}
 	 @Override
