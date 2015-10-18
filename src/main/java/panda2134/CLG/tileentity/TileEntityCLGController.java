@@ -70,13 +70,7 @@ public class TileEntityCLGController extends TileEntityBase {
 	@Override
 	public void updateEntity(){
 		if(worldObj.isRemote)
-			return;
-		timeToCheck++;
-		if(timeToCheck==10)
-			timeToCheck=0;
-		else
-			return;
-		System.out.println(timeToCheck);
+			return;		
 		updateState();
 		//enable generators if formed
 		
@@ -93,15 +87,22 @@ public class TileEntityCLGController extends TileEntityBase {
 		if(worldObj.isRemote)
 			return;
 		formed=this.isStructureComplete();
-		//CLGPacketHandler.INSTANCE
-		//.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
-		//										new TargetPoint(worldObj.provider.dimensionId,
-		//												xCoord, yCoord, zCoord, 64));
-		CLGPacketHandler.INSTANCE.sendToAll(new CLGFormedMessage(formed,xCoord,yCoord,zCoord));
+		this.sendChange();
+
+	}
+	
+	public void sendChange(){
+		/*
+		timeToCheck++;
+		if(timeToCheck==10)
+			timeToCheck=0;
+		else
+			return;
+		*/
+		CLGPacketHandler.INSTANCE
+		.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
+												new TargetPoint(worldObj.provider.dimensionId,
+														xCoord, yCoord, zCoord, 64));
 		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
-		
-		
-		
-		
 	}
 }
