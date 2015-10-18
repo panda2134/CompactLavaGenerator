@@ -74,7 +74,8 @@ public class TileEntityCLGController extends TileEntityBase {
 	public void updateEntity(){
 		if(worldObj.isRemote){
 			worldObj.markBlockRangeForRenderUpdate(
-					xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);	
+					xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		}else{
 			updateState();
 			//enable generators if formed
@@ -93,7 +94,7 @@ public class TileEntityCLGController extends TileEntityBase {
 		if(worldObj.isRemote)
 			return;
 		formed=this.isStructureComplete();
-		//this.sendChange();
+		this.sendChange();
 
 	}
 	
@@ -106,10 +107,10 @@ public class TileEntityCLGController extends TileEntityBase {
 			return;
 		*/
 		
-		CLGPacketHandler.INSTANCE
-		.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
-												new TargetPoint(worldObj.provider.dimensionId,
-														xCoord, yCoord, zCoord, 64));
+		//CLGPacketHandler.INSTANCE
+		//.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
+		//										new TargetPoint(worldObj.provider.dimensionId,
+		//												xCoord, yCoord, zCoord, 64));
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
 	}
@@ -117,8 +118,8 @@ public class TileEntityCLGController extends TileEntityBase {
 	 public Packet getDescriptionPacket() 
 	 {
 	     NBTTagCompound tagCompound = new NBTTagCompound();
-	         writeToNBT(tagCompound);
-	         return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tagCompound);
+	     writeToNBT(tagCompound);
+	     return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tagCompound);
 	 }
 	    
 	    @Override
@@ -126,8 +127,8 @@ public class TileEntityCLGController extends TileEntityBase {
 	 public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) 
 	     {
 	     //read the packet data from NBT 
-	         readFromNBT(packet.func_148857_g());
-	         //Update the block render in order to update the client texture
-	         Minecraft.getMinecraft().renderGlobal.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
+	     readFromNBT(packet.func_148857_g());
+	     //Update the block render in order to update the client texture
+	     Minecraft.getMinecraft().renderGlobal.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
 	 }
 }
