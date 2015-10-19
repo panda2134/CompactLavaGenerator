@@ -76,8 +76,9 @@ public class TileEntityCLGController extends TileEntityBase {
 			worldObj.markBlockRangeForRenderUpdate(
 					xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			return;
 		}else{
-			updateState();
+			this.updateState();
 			//enable generators if formed
 			
 			//disable generators if not formed
@@ -107,13 +108,16 @@ public class TileEntityCLGController extends TileEntityBase {
 			return;
 		*/
 		
-		//CLGPacketHandler.INSTANCE
-		//.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
-		//										new TargetPoint(worldObj.provider.dimensionId,
-		//												xCoord, yCoord, zCoord, 64));
+		CLGPacketHandler.INSTANCE
+		.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
+												new TargetPoint(worldObj.provider.dimensionId,
+														xCoord, yCoord, zCoord, 64));
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		worldObj.markBlockRangeForRenderUpdate(
+				xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);
 		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
 	}
+	/*
 	 @Override
 	 public Packet getDescriptionPacket() 
 	 {
@@ -131,4 +135,5 @@ public class TileEntityCLGController extends TileEntityBase {
 	     //Update the block render in order to update the client texture
 	     Minecraft.getMinecraft().renderGlobal.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
 	 }
+	 */
 }

@@ -46,6 +46,8 @@ public class GeneratorMultiblockHelper {
 								int centerX,int centerY,int centerZ,
 								int relX,int relY,int relZ,
 								String mainBlk){
+		if(world.isRemote)
+			return false;
 		int checkX,checkY,checkZ;
 		int offset=GeneratorMultiblockHelper.getOppositeFace(world.getBlockMetadata(centerX, centerY, centerZ));
 		try{
