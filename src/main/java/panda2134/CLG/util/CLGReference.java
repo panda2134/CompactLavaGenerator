@@ -24,11 +24,21 @@ public class CLGReference {
 	public static final String controllerName="CLGController";
 	public static final String casingName="CLGCasing";
 	public static final String generatorName="CLGLavaGenerator";
-	public static final String hatchName="CLGEnergyOutput";
+	public static final String hatchName="CLGEnergyHatch";
 	public static final String hammerName="CLGHammer";
 	public static final String pumpName="CLGLavaPump";
 	public static boolean isServer;
 	public static boolean isClient;
+	public static final int unitPerGenerator=512;// 512 GU/generator 512eu/t 2048rf/t
+	public static final int unitPerHatch=512;
+	public static final int controllerStorage=300000000;
+	public static final String[][][] CLGPattern=new String[][][]{
+		{{"L","L","L"},{"L","L","L"},{"L","L","L"}},
+		{{"B","B","B"},{"B","P","B"},{"B","B","B"}},
+		{{"B","B","B"},{"B","A","B"},{"B","B","B"}},
+		{{"B","B","B"},{"B","A","B"},{"B","B","B"}},
+		{{"B","B","B"},{"B","B","B"},{"B","B","B"}}
+};;
 	
 	public static void init() {
 		isServer=FMLCommonHandler.instance().getEffectiveSide().isServer();
@@ -49,6 +59,8 @@ public class CLGReference {
 		else if(str.equals("tile."+casingName))
 			return true;
 		else if(str.equals("tile."+generatorName))
+			return true;
+		else if(str.equals("tile."+hatchName))
 			return true;
 		return false;
 	}

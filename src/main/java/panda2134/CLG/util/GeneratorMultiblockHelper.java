@@ -3,6 +3,7 @@ package panda2134.CLG.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.crash.CrashReport;
@@ -11,6 +12,12 @@ import net.minecraft.util.ReportedException;
 import net.minecraft.world.World;
 
 public class GeneratorMultiblockHelper {
+	public static int max(int a,int b){
+		return a>b?a:b;
+	}
+	public static int min(int a,int b){
+		return a<b?a:b;
+	}
 	public static int getOppositeFace(int f){
 		int[] opposite=new int[]{1,0,3,2,5,4};
 		return opposite[f];
@@ -49,7 +56,8 @@ public class GeneratorMultiblockHelper {
 		if(world.isRemote)
 			return false;
 		int checkX,checkY,checkZ;
-		int offset=GeneratorMultiblockHelper.getOppositeFace(world.getBlockMetadata(centerX, centerY, centerZ));
+		int meta=world.getBlockMetadata(centerX, centerY, centerZ) & 7;
+		int offset=GeneratorMultiblockHelper.getOppositeFace(meta);
 		try{
 		checkX=GeneratorMultiblockHelper.getCheckCenterX(offset, centerX, relX, relZ, pattern[0].length);
 		checkY=GeneratorMultiblockHelper.getCheckCenterY(centerY, relY);
@@ -118,4 +126,48 @@ public class GeneratorMultiblockHelper {
 		return true;
 	}
 	
+	public static int countBlocksInRange(World world,
+			String[][][] pattern,
+			int centerX,int centerY,int centerZ,
+			int relX,int relY,int relZ,String unlocalizedName,boolean formed){
+		if(world.isRemote)
+			return 0;
+		int count=0;
+		int checkX,checkY,checkZ;
+		int metaC = world.getBlockMetadata(centerX, centerY, centerZ) & 7;
+		int offset=GeneratorMultiblockHelper.getOppositeFace(metaC);
+		try{
+		checkX=GeneratorMultiblockHelper.getCheckCenterX(offset, centerX, relX, relZ, pattern[0].length);
+		checkY=GeneratorMultiblockHelper.getCheckCenterY(centerY, relY);
+		checkZ=GeneratorMultiblockHelper.getCheckCenterZ(offset, centerZ, relX, relZ, pattern[0].length);
+		}catch(Exception e){
+			CrashReport cr=new CrashReport("Count Error", e);
+			throw new ReportedException(cr);
+		}
+		int realX,realY,realZ;
+		int x,y,z;
+		for(y=0;y<pattern.length;y++){
+			for(z=0;z<pattern[y].length;z++){
+				for(x=0;x<pattern[y][z].length;x++){
+					realX=checkX+x;
+					realY=checkY+y;
+					realZ=checkZ-z;
+					String blkName=world.getBlock(realX, realY, realZ).getUnlocalizedName();
+					if(blkName.equals(unlocalizedName)){
+						if(unlocalizedName.equals(panda2134.CLG.init.Blocks.
+								blockLavaGenerator.getUnlocalizedName())){
+							int meta=world.getBlockMetadata(realX, realY, realZ);
+							if(formed)
+								meta=meta | 8;
+							else
+								meta=meta & 7;
+							world.setBlockMetadataWithNotify(realX, realY, realZ, meta, 2);
+						}
+						count++;
+					}
+				}
+			}
+		}
+		return count;
+	}
 }

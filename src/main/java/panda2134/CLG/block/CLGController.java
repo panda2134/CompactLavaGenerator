@@ -2,6 +2,7 @@ package panda2134.CLG.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import panda2134.CLG.init.Blocks;
 import panda2134.CLG.tileentity.TileEntityCLGController;
 import panda2134.CLG.util.BlockFaceMetaHelper;
 import panda2134.CLG.util.CLGReference;
@@ -51,10 +52,12 @@ public class CLGController extends Block implements ITileEntityProvider{
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess iBlockAccess, int x, int y, int z,
             int side) {
-		Minecraft.getMinecraft().theWorld.notifyBlockChange(x, y, z, iBlockAccess.getBlock(x, y, z));
-		int face=iBlockAccess.getBlockMetadata(x, y, z);
-		boolean formed=((TileEntityCLGController)(iBlockAccess.getTileEntity(x, y, z))).formed;
-		if(!formed){
+		//Minecraft.getMinecraft().theWorld.
+		//notifyBlockChange(x, y, z, iBlockAccess.getBlock(x, y, z));
+		int face=iBlockAccess.getBlockMetadata(x, y, z) & 7;
+		int formed = iBlockAccess.getBlockMetadata(x, y, z) >>3;
+		//boolean formed=((TileEntityCLGController)(iBlockAccess.getTileEntity(x, y, z))).formed;
+		if(formed==0){
 			return (face==side)?icons[0]:icons[2];
 		}else{
 			return (face==side)?icons[1]:icons[2];
@@ -71,11 +74,24 @@ public class CLGController extends Block implements ITileEntityProvider{
 	@Override
 	public void onNeighborBlockChange(World world,int x,int y,int z,
 													Block blk){
-		
+		if(blk.getUnlocalizedName()!=Blocks.blockController.getUnlocalizedName())
+			return;
+		TileEntityCLGController te=
+				(TileEntityCLGController)world.getTileEntity(x, y, z);
+		if(te == null)
+			return;
+		te.updateState();
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
 		return new TileEntityCLGController();
 	}
+	
+	 @Override
+	 public boolean onBlockEventReceived(World worldIn, int x, int y, int z, int event, int eventParam) {
+	     super.onBlockEventReceived(worldIn, x, y, z, event, eventParam);
+	     TileEntity tileentity = worldIn.getTileEntity(x, y, z);
+	     return tileentity == null ? false : tileentity.receiveClientEvent(event,eventParam);
+	 }
 }

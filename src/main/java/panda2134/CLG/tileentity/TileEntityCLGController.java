@@ -43,28 +43,26 @@ public class TileEntityCLGController extends TileEntityBase {
 	}
 	
 	public void onHitByHammer(EntityPlayer player){
-		boolean formed=this.isStructureComplete();
+		this.updateEntity();
 		if(!formed){
 			player.addChatComponentMessage(new ChatComponentText("Structure Incorrect!"));
 		}else{
 			player.addChatMessage(new ChatComponentText(
+					"¡ì6"+
 					"Generating:"+this.generating+
+					"     "
+					+"Stroage:"+this.storage+
 					"     "
 					+"Output:"+this.output));
 		}
 	}
 	
 	public boolean isStructureComplete() {
-		String[][][] pattern=new String[][][]{
-			{{"L","L","L"},{"L","L","L"},{"L","L","L"}},
-			{{"B","B","B"},{"B","P","B"},{"B","B","B"}},
-			{{"B","B","B"},{"B","A","B"},{"B","B","B"}},
-			{{"B","B","B"},{"B","A","B"},{"B","B","B"}},
-			{{"B","B","B"},{"B","B","B"},{"B","B","B"}}
-	};
+		
 		World world=this.getWorldObj();
 		boolean state=
-				GeneratorMultiblockHelper.checkPattern(pattern, world, xCoord, yCoord, zCoord,
+				GeneratorMultiblockHelper.checkPattern(CLGReference.CLGPattern,
+						world, xCoord, yCoord, zCoord,
 						1, 1, 0,
 						Blocks.blockController.getUnlocalizedName());
 		return state;
@@ -79,15 +77,24 @@ public class TileEntityCLGController extends TileEntityBase {
 			return;
 		}else{
 			this.updateState();
-			//enable generators if formed
-			
-			//disable generators if not formed
-			
+			//set generators
+			this.generating=GeneratorMultiblockHelper.countBlocksInRange(worldObj,
+							CLGReference.CLGPattern,
+							xCoord, yCoord, zCoord, 1, 1, 0,
+							Blocks.blockLavaGenerator.getUnlocalizedName(), 
+							this.formed)*CLGReference.unitPerGenerator;
 			//set output limit
-			
+			this.outputLimit=GeneratorMultiblockHelper.countBlocksInRange(worldObj,
+					CLGReference.CLGPattern,
+					xCoord, yCoord, zCoord, 1, 1, 0,
+					Blocks.blockEnergyHatch.getUnlocalizedName(), 
+					this.formed)*CLGReference.unitPerHatch;
 			//add generating to storage
-			
+			if(this.storage<=CLGReference.controllerStorage)
+				this.storage+=this.generating;
 			//output and set this.output
+			
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		}
 	}
 	
@@ -108,14 +115,20 @@ public class TileEntityCLGController extends TileEntityBase {
 			return;
 		*/
 		
-		CLGPacketHandler.INSTANCE
-		.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
-												new TargetPoint(worldObj.provider.dimensionId,
-														xCoord, yCoord, zCoord, 64));
+		//CLGPacketHandler.INSTANCE
+		//.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
+		//										new TargetPoint(worldObj.provider.dimensionId,
+		//												xCoord, yCoord, zCoord, 64));
+		int meta;
+		if(this.formed)
+			meta=worldObj.getBlockMetadata(xCoord, yCoord, zCoord) | 8;
+		else
+			meta=worldObj.getBlockMetadata(xCoord, yCoord, zCoord) & 7;
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, meta, 2);
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-		worldObj.markBlockRangeForRenderUpdate(
-				xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);
-		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
+		//worldObj.markBlockRangeForRenderUpdate(
+		//		xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);
+		//worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
 	}
 	/*
 	 @Override
