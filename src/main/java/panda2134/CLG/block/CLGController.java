@@ -2,6 +2,7 @@ package panda2134.CLG.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import panda2134.CLG.CLGMod;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.tileentity.TileEntityCLGController;
 import panda2134.CLG.util.BlockFaceMetaHelper;
@@ -32,6 +33,7 @@ public class CLGController extends Block implements ITileEntityProvider{
 		this.setStepSound(soundTypeMetal);
 		this.setHardness(3);
 		this.setResistance(6);
+		this.setCreativeTab(CLGMod.tabCLG);
 	}
 	
 	@Override

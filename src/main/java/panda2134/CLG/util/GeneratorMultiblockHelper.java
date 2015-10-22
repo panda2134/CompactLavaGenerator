@@ -3,6 +3,7 @@ package panda2134.CLG.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import panda2134.CLG.tileentity.TileEntityEnergyHatch;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -169,5 +170,58 @@ public class GeneratorMultiblockHelper {
 			}
 		}
 		return count;
+	}
+	
+	public static void outputToHatch(World world,
+			String[][][] pattern,double output,int count,
+			int centerX,int centerY,int centerZ,
+			int relX,int relY,int relZ,boolean formed){
+		if(world.isRemote)
+			return;
+		double outputOfPer=output / count;
+		int checkX,checkY,checkZ;
+		int metaC = world.getBlockMetadata(centerX, centerY, centerZ) & 7;
+		int offset=GeneratorMultiblockHelper.getOppositeFace(metaC);
+		try{
+		checkX=GeneratorMultiblockHelper.getCheckCenterX(offset, centerX, relX, relZ, pattern[0].length);
+		checkY=GeneratorMultiblockHelper.getCheckCenterY(centerY, relY);
+		checkZ=GeneratorMultiblockHelper.getCheckCenterZ(offset, centerZ, relX, relZ, pattern[0].length);
+		}catch(Exception e){
+			CrashReport cr=new CrashReport("Output Error", e);
+			throw new ReportedException(cr);
+		}
+		int realX,realY,realZ;
+		int x,y,z;
+		for(y=0;y<pattern.length;y++){
+			for(z=0;z<pattern[y].length;z++){
+				for(x=0;x<pattern[y][z].length;x++){
+					realX=checkX+x;
+					realY=checkY+y;
+					realZ=checkZ-z;
+					Block blk=world.getBlock(realX, realY, realZ);
+					String blkName=blk.getUnlocalizedName();
+					if(blkName.equals(panda2134.CLG.init.Blocks.
+							blockEnergyHatch.getUnlocalizedName())){
+	
+							TileEntityEnergyHatch te=
+									(TileEntityEnergyHatch)
+									world.getTileEntity(realX, realY, realZ);
+							//TODO:output
+							if(te==null)
+								continue;
+							if(formed){
+							//if eu
+							//blk.output(energyPerHatch,"eu")
+							te.energyToOutput=outputOfPer;
+							//elif rf
+							//blk.output(energyPerHatch,"rf")
+							//...
+							}else{
+								te.energyToOutput=0;
+							}
+					}
+				}
+			}
+		}
 	}
 }

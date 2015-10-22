@@ -14,12 +14,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityCLGController extends TileEntityBase {
+public class TileEntityCLGController extends TileEntityBase implements IUpdatePlayerListBox{
 	public double generating,outputLimit,output,storage;
 	public int timeToCheck;
 	public boolean init;
@@ -43,9 +44,10 @@ public class TileEntityCLGController extends TileEntityBase {
 	}
 	
 	public void onHitByHammer(EntityPlayer player){
-		this.updateEntity();
+		//this.update();
 		if(!formed){
-			player.addChatComponentMessage(new ChatComponentText("Structure Incorrect!"));
+			player.addChatComponentMessage(new ChatComponentText("¡ìcStructure Incorrect!"));
+			player.addChatComponentMessage(new ChatComponentText("¡ìcMust use in Nether!"));
 		}else{
 			player.addChatMessage(new ChatComponentText(
 					"¡ì6"+
@@ -69,6 +71,10 @@ public class TileEntityCLGController extends TileEntityBase {
 	}
 	
 	@Override
+	public void update(){
+		this.updateEntity();
+	}
+	
 	public void updateEntity(){
 		if(worldObj.isRemote){
 			worldObj.markBlockRangeForRenderUpdate(
@@ -84,16 +90,27 @@ public class TileEntityCLGController extends TileEntityBase {
 							Blocks.blockLavaGenerator.getUnlocalizedName(), 
 							this.formed)*CLGReference.unitPerGenerator;
 			//set output limit
-			this.outputLimit=GeneratorMultiblockHelper.countBlocksInRange(worldObj,
+			int countOfHatch=GeneratorMultiblockHelper.countBlocksInRange(worldObj,
 					CLGReference.CLGPattern,
 					xCoord, yCoord, zCoord, 1, 1, 0,
 					Blocks.blockEnergyHatch.getUnlocalizedName(), 
-					this.formed)*CLGReference.unitPerHatch;
+					this.formed);
+			this.outputLimit=countOfHatch*CLGReference.unitPerHatch;
 			//add generating to storage
 			if(this.storage<=CLGReference.controllerStorage)
 				this.storage+=this.generating;
-			//output and set this.output
-			
+			//set this.output
+			if(this.storage-this.outputLimit>0)
+				this.output=this.outputLimit;
+			else
+				this.output=this.storage;
+			//output
+			//TODO
+
+			GeneratorMultiblockHelper.outputToHatch
+			(worldObj, CLGReference.CLGPattern, output,
+					countOfHatch, xCoord, yCoord, zCoord,
+					1, 1, 0, formed);
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		}
 	}
@@ -101,7 +118,7 @@ public class TileEntityCLGController extends TileEntityBase {
 	public void updateState(){
 		if(worldObj.isRemote)
 			return;
-		formed=this.isStructureComplete();
+		formed=this.isStructureComplete() && worldObj.provider.isHellWorld; //must in nether
 		this.sendChange();
 
 	}

@@ -1,5 +1,8 @@
 package panda2134.CLG;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -19,6 +22,12 @@ import panda2134.CLG.util.CLGReference;
 public class CLGMod {
 	
 	public static CLGMod INSTANCE=new CLGMod();
+	public static CreativeTabs tabCLG = new CreativeTabs("clg"){
+		@Override
+		public Item getTabIconItem(){
+			return new ItemStack(Blocks.blockController).getItem();
+		}
+	};
 	
 	@SidedProxy(clientSide="panda2134.CLG.proxy.ClientProxy",serverSide="panda2134.CLG.proxy.CommonProxy")
 	public static Proxy proxy;
@@ -26,6 +35,7 @@ public class CLGMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		CLGReference.init();
+		
 		Blocks.init();
 		Items.init();
 		
@@ -39,7 +49,8 @@ public class CLGMod {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
 		proxy.postInit(event);
 	}
+	
+	 
 }
