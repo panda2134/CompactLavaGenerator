@@ -178,7 +178,11 @@ public class GeneratorMultiblockHelper {
 			int relX,int relY,int relZ,boolean formed){
 		if(world.isRemote)
 			return 0;
-		double outputOfPer=output / count;
+		double outputOfPer;
+		if(count!=0)
+			outputOfPer=output / count;
+		else
+			return 0;
 		int checkX,checkY,checkZ;
 		int metaC = world.getBlockMetadata(centerX, centerY, centerZ) & 7;
 		int offset=GeneratorMultiblockHelper.getOppositeFace(metaC);
