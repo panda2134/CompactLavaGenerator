@@ -172,12 +172,12 @@ public class GeneratorMultiblockHelper {
 		return count;
 	}
 	
-	public static void outputToHatch(World world,
+	public static double outputToHatch(World world,
 			String[][][] pattern,double output,int count,
 			int centerX,int centerY,int centerZ,
 			int relX,int relY,int relZ,boolean formed){
 		if(world.isRemote)
-			return;
+			return 0;
 		double outputOfPer=output / count;
 		int checkX,checkY,checkZ;
 		int metaC = world.getBlockMetadata(centerX, centerY, centerZ) & 7;
@@ -223,5 +223,10 @@ public class GeneratorMultiblockHelper {
 				}
 			}
 		}
+		if(formed){
+			return outputOfPer * count;
+		}
+		else
+			return 0;
 	}
 }

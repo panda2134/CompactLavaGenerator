@@ -107,14 +107,13 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 			//output
 			//TODO
 
-			GeneratorMultiblockHelper.outputToHatch
+			this.storage-=GeneratorMultiblockHelper.outputToHatch
 			(worldObj, CLGReference.CLGPattern, output,
 					countOfHatch, xCoord, yCoord, zCoord,
 					1, 1, 0, formed);
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		}
 	}
-	
 	public void updateState(){
 		if(worldObj.isRemote)
 			return;
