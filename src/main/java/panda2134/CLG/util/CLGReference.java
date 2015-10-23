@@ -27,8 +27,6 @@ public class CLGReference {
 	public static final String hatchName="CLGEnergyHatch";
 	public static final String hammerName="CLGHammer";
 	public static final String pumpName="CLGLavaPump";
-	public static boolean isServer;
-	public static boolean isClient;
 	public static final int unitPerGenerator=512;// 512 GU/generator 512eu/t 2048rf/t
 	public static final int unitPerHatch=512;
 	public static final int controllerStorage=300000000;
@@ -41,8 +39,7 @@ public class CLGReference {
 };;
 	
 	public static void init() {
-		isServer=FMLCommonHandler.instance().getEffectiveSide().isServer();
-		isClient=FMLCommonHandler.instance().getEffectiveSide().isClient();
+		
 	}
 	
 	public static boolean isSpecialBlkForMulti(String str,Block blk){
@@ -64,4 +61,13 @@ public class CLGReference {
 			return true;
 		return false;
 	}
+	
+	public static boolean isServer(){
+		return FMLCommonHandler.instance().getEffectiveSide().isServer();
+	}
+	
+	public static boolean isClient(){
+		return FMLCommonHandler.instance().getEffectiveSide().isClient();
+	}
+
 }

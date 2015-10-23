@@ -13,6 +13,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.init.Items;
 import panda2134.CLG.init.TileEntities;
+import panda2134.CLG.integration.IntegrationTypes;
 import panda2134.CLG.network.CLGPacketHandler;
 import panda2134.CLG.proxy.CommonProxy;
 import panda2134.CLG.proxy.Proxy;
@@ -43,6 +44,10 @@ public class CLGMod {
 	}
 	@EventHandler
 	public void init(FMLInitializationEvent event){
+		for(IntegrationTypes t:IntegrationTypes.values()){
+			if(t.getModule()!=null)
+				t.getModule().init();
+		}
 		TileEntities.init();
 		CLGPacketHandler.init();
 		proxy.init(event);

@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
+version = "1.0.0-pre2"
 group= "panda2134.CLG" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CLG"
 
@@ -39,7 +39,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    compile files('libs/industrialcraft-2-2.2.785-experimental-api.jar','libs/CoFHLib-[1.7.10]1.0.3-175.jar')
 }
 
 processResources

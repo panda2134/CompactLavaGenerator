@@ -6,6 +6,7 @@ import panda2134.CLG.CLGMod;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.network.CLGPacketHandler;
 import panda2134.CLG.tileentity.TileEntityCLGController;
+import panda2134.CLG.tileentity.TileEntityEnergyHatch;
 import panda2134.CLG.util.CLGReference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -28,7 +29,8 @@ public class CLGHammer extends Item {
 		if(world.isRemote) return true;
 		if(te instanceof TileEntityCLGController)
 			((TileEntityCLGController)te).onHitByHammer(player);
-		
+		else if(te instanceof TileEntityEnergyHatch)
+			((TileEntityEnergyHatch)te).onHitByHammer(player);
 		return true;
 	}
 }
