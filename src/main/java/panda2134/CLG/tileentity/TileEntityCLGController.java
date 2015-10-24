@@ -118,23 +118,13 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 		if(worldObj.isRemote)
 			return;
 		formed=this.isStructureComplete() && worldObj.provider.isHellWorld; //must in nether
+		if(!formed)
+			this.storage=0.0D;
 		this.sendChange();
 
 	}
 	
 	public void sendChange(){
-		/*
-		timeToCheck++;
-		if(timeToCheck==10)
-			timeToCheck=0;
-		else
-			return;
-		*/
-		
-		//CLGPacketHandler.INSTANCE
-		//.sendToAllAround(new CLGFormedMessage(formed,xCoord,yCoord,zCoord),
-		//										new TargetPoint(worldObj.provider.dimensionId,
-		//												xCoord, yCoord, zCoord, 64));
 		int meta;
 		if(this.formed)
 			meta=worldObj.getBlockMetadata(xCoord, yCoord, zCoord) | 8;
@@ -142,27 +132,5 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 			meta=worldObj.getBlockMetadata(xCoord, yCoord, zCoord) & 7;
 		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, meta, 2);
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-		//worldObj.markBlockRangeForRenderUpdate(
-		//		xCoord-10, yCoord-10, zCoord-10, xCoord+10, yCoord+10, zCoord+10);
-		//worldObj.notifyBlockChange(xCoord, yCoord, zCoord, this.blockType);
 	}
-	/*
-	 @Override
-	 public Packet getDescriptionPacket() 
-	 {
-	     NBTTagCompound tagCompound = new NBTTagCompound();
-	     writeToNBT(tagCompound);
-	     return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, tagCompound);
-	 }
-	    
-	    @Override
-	    //Other Forge release use Packet132TileEntityData instead of S35PacketUpdateTileEntity
-	 public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) 
-	     {
-	     //read the packet data from NBT 
-	     readFromNBT(packet.func_148857_g());
-	     //Update the block render in order to update the client texture
-	     Minecraft.getMinecraft().renderGlobal.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
-	 }
-	 */
 }

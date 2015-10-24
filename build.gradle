@@ -39,7 +39,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    compile files('libs/industrialcraft-2-2.2.785-experimental-api.jar','libs/CoFHLib-[1.7.10]1.0.3-175.jar')
+    compile files('libs/industrialcraft-2-2.2.785-experimental-api.jar','libs/CoFHLib-[1.7.10]1.0.3-175.jar','libs/Factorization-1.7.10-0.8.98-dev.jar')
 }
 
 processResources

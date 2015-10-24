@@ -18,6 +18,7 @@ import panda2134.CLG.network.CLGPacketHandler;
 import panda2134.CLG.proxy.CommonProxy;
 import panda2134.CLG.proxy.Proxy;
 import panda2134.CLG.util.CLGReference;
+import panda2134.CLG.util.Mods;
 
 @Mod(modid=CLGReference.modid,name=CLGReference.modName,version=CLGReference.version)
 public class CLGMod {
@@ -54,6 +55,7 @@ public class CLGMod {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
+		System.out.println(Mods.Factorization.available);
 		proxy.postInit(event);
 	}
 	
