@@ -20,7 +20,7 @@ import panda2134.CLG.init.Blocks;
 public class CLGReference {
 	public static final String modid="CLG";
 	public static final String modName="Compact Lava Generator";
-	public static final String version="1.0.0-pre3";
+	public static final String version="@VERSION@";
 	public static final String controllerName="CLGController";
 	public static final String casingName="CLGCasing";
 	public static final String generatorName="CLGLavaGenerator";
