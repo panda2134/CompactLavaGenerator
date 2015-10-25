@@ -17,29 +17,27 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0.0-pre2"
+repositories {
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+}
+
+version = "1.0.0-pre3"
 group= "panda2134.CLG" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CLG"
 
 minecraft {
     version = "1.7.10-10.13.4.1492-1.7.10"
     runDir = "eclipse"
+
+    replaceIn "CLGReference.java"
+        replace "@VERSION@", project.version
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    compile files('libs/industrialcraft-2-2.2.785-experimental-api.jar','libs/CoFHLib-[1.7.10]1.0.3-175.jar','libs/Factorization-1.7.10-0.8.98-dev.jar')
+    compile 'net.industrial-craft:industrialcraft-2:2.2.785-experimental:api'
 }
 
 processResources
