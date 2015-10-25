@@ -11,6 +11,6 @@
   "credits": "panda_2134, ueyudiud",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["IC2","factorization","ThermalExpansion"]
 }
 ]

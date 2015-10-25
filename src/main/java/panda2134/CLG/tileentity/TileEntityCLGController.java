@@ -46,9 +46,15 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 	public void onHitByHammer(EntityPlayer player){
 		//this.update();
 		if(!formed){
-			player.addChatComponentMessage(new ChatComponentText("§cStructure Incorrect!"));
-			player.addChatComponentMessage(new ChatComponentText("§cMust use in Nether!"));
+			player.addChatComponentMessage(new ChatComponentText("§c================================="));
+			player.addChatComponentMessage(new ChatComponentText("§cNot Activated!"));
+			player.addChatComponentMessage(new ChatComponentText("§6How To Activate It:"));
+			player.addChatComponentMessage(new ChatComponentText("§61.Make the structure complete"));
+			player.addChatComponentMessage(new ChatComponentText("§62.Put it in Nether"));
+			player.addChatComponentMessage(new ChatComponentText("§63.Don't give it a redstone signal"));
+			player.addChatComponentMessage(new ChatComponentText("§c================================="));
 		}else{
+			player.addChatComponentMessage(new ChatComponentText("§6==============================================="));
 			player.addChatMessage(new ChatComponentText(
 					"§6"+
 					"Generating:"+this.generating+
@@ -56,6 +62,7 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 					+"Stroage:"+this.storage+
 					"     "
 					+"Output:"+this.output));
+			player.addChatComponentMessage(new ChatComponentText("§6==============================================="));
 		}
 	}
 	
@@ -117,7 +124,8 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 	public void updateState(){
 		if(worldObj.isRemote)
 			return;
-		formed=this.isStructureComplete() && worldObj.provider.isHellWorld; //must in nether
+		formed=this.isStructureComplete() && worldObj.provider.isHellWorld //must in nether
+				&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord); 
 		if(!formed)
 			this.storage=0.0D;
 		this.sendChange();

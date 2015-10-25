@@ -29,7 +29,7 @@ public class CLGReference {
 	public static final String pumpName="CLGLavaPump";
 	public static final int unitPerGenerator=512;// 512 GU/generator 512eu/t 2048rf/t
 	public static final int unitPerHatch=512;
-	public static final int controllerStorage=300000000;
+	public static final int controllerStorage=10000000;
 	public static final String[][][] CLGPattern=new String[][][]{
 		{{"L","L","L"},{"L","L","L"},{"L","L","L"}},
 		{{"B","B","B"},{"B","P","B"},{"B","B","B"}},
