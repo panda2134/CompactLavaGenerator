@@ -55,7 +55,6 @@ public class CLGMod {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		System.out.println(Mods.Factorization.available);
 		proxy.postInit(event);
 	}
 	
