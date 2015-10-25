@@ -46,11 +46,11 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 	public void onHitByHammer(EntityPlayer player){
 		//this.update();
 		if(!formed){
-			player.addChatComponentMessage(new ChatComponentText("¡ìcStructure Incorrect!"));
-			player.addChatComponentMessage(new ChatComponentText("¡ìcMust use in Nether!"));
+			player.addChatComponentMessage(new ChatComponentText("Â§cStructure Incorrect!"));
+			player.addChatComponentMessage(new ChatComponentText("Â§cMust use in Nether!"));
 		}else{
 			player.addChatMessage(new ChatComponentText(
-					"¡ì6"+
+					"Â§6"+
 					"Generating:"+this.generating+
 					"     "
 					+"Stroage:"+this.storage+
