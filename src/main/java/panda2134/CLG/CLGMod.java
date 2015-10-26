@@ -55,6 +55,10 @@ public class CLGMod {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
+		for(IntegrationTypes t:IntegrationTypes.values()){
+			if(t.getModule()!=null)
+				t.getModule().postInit();
+		}
 		proxy.postInit(event);
 	}
 	

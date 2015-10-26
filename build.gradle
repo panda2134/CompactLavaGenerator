@@ -24,7 +24,7 @@ repositories {
     }
 }
 
-version = "1.0.0-pre3"
+version = "1.0.0"
 group= "panda2134.CLG" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CLG"
 
@@ -37,7 +37,7 @@ minecraft {
 }
 
 dependencies {
-    compile 'net.industrial-craft:industrialcraft-2:2.2.785-experimental:api'
+    compile 'net.industrial-craft:industrialcraft-2:2.2.785-experimental:dev'
 }
 
 processResources
