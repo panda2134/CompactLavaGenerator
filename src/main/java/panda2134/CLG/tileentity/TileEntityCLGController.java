@@ -17,6 +17,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -46,23 +47,17 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 	public void onHitByHammer(EntityPlayer player){
 		//this.update();
 		if(!formed){
-			player.addChatComponentMessage(new ChatComponentText("§c================================="));
-			player.addChatComponentMessage(new ChatComponentText("§cNot Activated!"));
-			player.addChatComponentMessage(new ChatComponentText("§6How To Activate It:"));
-			player.addChatComponentMessage(new ChatComponentText("§61.Make the structure complete"));
-			player.addChatComponentMessage(new ChatComponentText("§62.Put it in Nether"));
-			player.addChatComponentMessage(new ChatComponentText("§63.Don't give it a redstone signal"));
-			player.addChatComponentMessage(new ChatComponentText("§c================================="));
+			player.addChatComponentMessage(new ChatComponentText("================================="));
+			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.0"));
+			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.1"));
+			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.2"));
+			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.3"));
+			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.4"));
+			player.addChatComponentMessage(new ChatComponentText("================================="));
 		}else{
-			player.addChatComponentMessage(new ChatComponentText("§6==============================================="));
-			player.addChatMessage(new ChatComponentText(
-					"§6"+
-					"Generating:"+this.generating+
-					"     "
-					+"Stroage:"+this.storage+
-					"     "
-					+"Output:"+this.output));
-			player.addChatComponentMessage(new ChatComponentText("§6==============================================="));
+			player.addChatComponentMessage(new ChatComponentText("==============================================="));
+			player.addChatMessage(new ChatComponentTranslation("tile.CLGController.info", generating, storage, output));
+			player.addChatComponentMessage(new ChatComponentText("==============================================="));
 		}
 	}
 	
