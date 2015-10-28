@@ -1,0 +1,14 @@
+tile.CLGCasing.name=Generator Casing
+tile.CLGController.name=Generator Controller
+tile.CLGLavaPump.name=Generator Lava Pump
+tile.CLGLavaGenerator.name=Generator Module
+tile.CLGEnergyHatch.name=Energy Hatch
+item.CLGHammer.name=Hammer
+itemGroup.clg=Compact Lava Generator
+tile.CLGController.notok.0=Not Activated!
+tile.CLGController.notok.1=How To Activate It:
+tile.CLGController.notok.2=1.Make the structure complete
+tile.CLGController.notok.3=2.Put it in Nether
+tile.CLGController.notok.4=3.Don't give it a redstone signal
+tile.CLGController.info=Generating:%d,Storage:%d,Output:%d
+tile.CLGEnergyHatch.info=Unit:%s

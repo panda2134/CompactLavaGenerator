@@ -1,0 +1,14 @@
+tile.CLGCasing.name=发电机外壳
+tile.CLGController.name=发电机控制器
+tile.CLGLavaPump.name=发电机岩浆泵
+tile.CLGLavaGenerator.name=发电机模块
+tile.CLGEnergyHatch.name=能量输出舱
+item.CLGHammer.name=锤子
+itemGroup.clg=高级地热发电机
+tile.CLGController.notok.0=控制器未激活!
+tile.CLGController.notok.1=如何激活:
+tile.CLGController.notok.2=1.完整摆放多方块发电机
+tile.CLGController.notok.3=2.把发电机放在下界
+tile.CLGController.notok.4=3.不要给它红石信号
+tile.CLGController.info=发电量:%d,存储:%d,输出:%d
+tile.CLGEnergyHatch.info=能量单位:%s
