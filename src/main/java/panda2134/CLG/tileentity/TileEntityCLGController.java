@@ -45,13 +45,13 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 	}
 	
 	public void onHitByHammer(EntityPlayer player){
-		//this.update();
 		if(!formed){
 			player.addChatComponentMessage(new ChatComponentText("================================="));
 			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.0"));
 			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.1"));
 			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.2"));
-			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.3"));
+			if(CLGReference.mustUseInNether)
+				player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.3"));
 			player.addChatComponentMessage(new ChatComponentTranslation("tile.CLGController.notok.4"));
 			player.addChatComponentMessage(new ChatComponentText("================================="));
 		}else{
@@ -119,8 +119,13 @@ public class TileEntityCLGController extends TileEntityBase implements IUpdatePl
 	public void updateState(){
 		if(worldObj.isRemote)
 			return;
-		formed=this.isStructureComplete() && worldObj.provider.isHellWorld //must in nether
-				&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord); 
+		if(CLGReference.mustUseInNether){
+			formed=this.isStructureComplete() && worldObj.provider.isHellWorld //must in nether
+					&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord); 
+		}else{
+			formed=this.isStructureComplete()
+					&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord); 
+		}
 		if(!formed)
 			this.storage=0.0D;
 		this.sendChange();
