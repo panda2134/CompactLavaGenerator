@@ -171,7 +171,8 @@ public class TileEntityEnergyHatch extends TileEntity
 
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from) {
-			return from.ordinal() == this.blockMetadata;
+			return (from.ordinal() == this.getBlockMetadata())
+					&& (this.unit==null || this.unit.equals(EnergyUnit.RF));
 	}
 	
 	@Method(modid=Mods.IDs.cofhApiEnergy)
@@ -179,17 +180,16 @@ public class TileEntityEnergyHatch extends TileEntity
 		if ((energyToOutput > 0) && unit.equals(EnergyUnit.RF)) {
 				TileEntity tile = 
 						worldObj.getTileEntity(
-								xCoord + ForgeDirection.getOrientation(blockMetadata).offsetX,
-								yCoord + ForgeDirection.getOrientation(blockMetadata).offsetY,
-								zCoord + ForgeDirection.getOrientation(blockMetadata).offsetZ);
-				ForgeDirection side=ForgeDirection.getOrientation(blockMetadata);
+								xCoord + ForgeDirection.getOrientation(this.getBlockMetadata()).offsetX,
+								yCoord + ForgeDirection.getOrientation(this.getBlockMetadata()).offsetY,
+								zCoord + ForgeDirection.getOrientation(this.getBlockMetadata()).offsetZ);
+				ForgeDirection side=ForgeDirection.getOrientation(this.getBlockMetadata());
 				if (tile != null &&
 						((tile instanceof IEnergyHandler) || tile instanceof IEnergyConnection || tile instanceof IEnergyReceiver)
 						&& canReceiveRFPower(tile,side.getOpposite())) {
 					((IEnergyReceiver)tile).receiveEnergy(side.getOpposite(), 
 							(int) RFEnergyModule.getOutput(this.energyToOutput), 
 							false);
-				//TODO fix the bug of connecting the TD Pipe
 				}
 			}
 		}
