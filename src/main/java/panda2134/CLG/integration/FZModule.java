@@ -7,6 +7,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.init.Items;
+import panda2134.CLG.util.CLGReference;
 import panda2134.CLG.util.Mods;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -85,8 +86,8 @@ public class FZModule extends BaseModule {
 	 */
 	@Override
 	public void postInit() {
-		// TODO Auto-generated method stub
-		setFZCompatRecipes();
+		if (CLGReference.recipeState.get(Mods.IDs.fz))
+			setFZCompatRecipes();
 	}
 
 }

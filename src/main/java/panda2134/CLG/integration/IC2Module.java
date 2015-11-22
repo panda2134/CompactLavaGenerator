@@ -6,6 +6,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.init.Items;
+import panda2134.CLG.util.CLGReference;
+import panda2134.CLG.util.Mods;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class IC2Module extends BaseModule {
@@ -88,7 +90,8 @@ public class IC2Module extends BaseModule {
 	 */
 	@Override
 	public void init() {
-		this.setIC2CompatRecipes();
+		if (CLGReference.recipeState.get(Mods.IDs.ic2))
+			this.setIC2CompatRecipes();
 	}
 
 }

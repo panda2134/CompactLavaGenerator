@@ -14,7 +14,8 @@ public enum IntegrationTypes {
 	IC2(IC2Module.class, Mods.IC2), CofhAPIEnergy(RFEnergyModule.class,
 			Mods.cofhApiEnergy), ThermalExpansion(TEModule.class,
 			Mods.ThermalExpansion), Factorization(FZModule.class,
-			Mods.Factorization);
+			Mods.Factorization), ImmersiveEngineering(IEModule.class,
+			Mods.ImmersiveEngineering);
 
 	public Class<? extends BaseModule> clz;
 	public Mods.Mod mod;

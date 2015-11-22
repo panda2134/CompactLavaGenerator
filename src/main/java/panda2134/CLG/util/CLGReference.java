@@ -52,12 +52,15 @@ public class CLGReference {
 				.getBoolean("MustUseInNether", cfg.getCategory("general")
 						.getName(), true,
 						"Set this to false to enable the generator to run in any world");
+
 		for (IntegrationTypes t : IntegrationTypes.values()) {
-			recipeState.put(
-					t.mod.id,
-					cfg.getBoolean(t.mod.id, "recipes", true, t.mod.id
-							+ " recipe"));
+			if (t.mod.hasRecipe)
+				recipeState.put(
+						t.mod.id,
+						cfg.getBoolean(t.mod.id, "recipes", true, t.mod.id
+								+ " recipe"));
 		}
+
 		cfg.save();
 	}
 
