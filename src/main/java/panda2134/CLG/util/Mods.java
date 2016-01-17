@@ -13,6 +13,7 @@ public class Mods {
 		public static final String cofhApiEnergy = "CoFHAPI|energy";
 		public static final String fz = "factorization";
 		public static final String IE = "ImmersiveEngineering";
+		public static final String BC = "BuildCraft|Silicon";
 	}
 
 	public static final Mod IC2 = new Mod(IDs.ic2, true);
@@ -21,6 +22,7 @@ public class Mods {
 	public static final Mod cofhApiEnergy = new Mod(IDs.cofhApiEnergy, false);
 	public static final Mod Factorization = new Mod(IDs.fz, true);
 	public static final Mod ImmersiveEngineering = new Mod(IDs.IE, true);
+	public static final Mod BuildCraft = new Mod(IDs.BC, true);
 
 	public static class Mod {
 		public String id;

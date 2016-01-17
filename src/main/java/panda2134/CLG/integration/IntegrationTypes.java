@@ -15,7 +15,8 @@ public enum IntegrationTypes {
 			Mods.cofhApiEnergy), ThermalExpansion(TEModule.class,
 			Mods.ThermalExpansion), Factorization(FZModule.class,
 			Mods.Factorization), ImmersiveEngineering(IEModule.class,
-			Mods.ImmersiveEngineering);
+			Mods.ImmersiveEngineering), BuildCraft(BCModule.class,
+			Mods.BuildCraft);
 
 	public Class<? extends BaseModule> clz;
 	public Mods.Mod mod;
