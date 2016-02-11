@@ -1,0 +1,166 @@
+---- Minecraft Crash Report ----
+// This is a token for 1 free hug. Redeem at your nearest Mojangsta: [~~HUG~~]
+
+Time: 15-12-27 下午6:42
+Description: Updating screen events
+
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(Unknown Source)
+	at java.util.ArrayList.get(Unknown Source)
+	at panda2134.CLG.integration.BCModule$BCRecipeManager.getExampleExpansions(BCModule.java:63)
+	at buildcraft.compat.nei.RecipeHandlerIntegrationTable$CachedIntegrationTableRecipe.<init>(RecipeHandlerIntegrationTable.java:120)
+	at buildcraft.compat.nei.RecipeHandlerIntegrationTable.createRecipe(RecipeHandlerIntegrationTable.java:78)
+	at buildcraft.compat.nei.RecipeHandlerIntegrationTable.loadCraftingRecipes(RecipeHandlerIntegrationTable.java:84)
+	at codechicken.nei.recipe.TemplateRecipeHandler.loadCraftingRecipes(TemplateRecipeHandler.java:327)
+	at buildcraft.compat.nei.RecipeHandlerBase.loadCraftingRecipes(RecipeHandlerBase.java:80)
+	at codechicken.nei.recipe.TemplateRecipeHandler.getRecipeHandler(TemplateRecipeHandler.java:465)
+	at codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(GuiCraftingRecipe.java:20)
+	at codechicken.nei.recipe.RecipeItemInputHandler.lastKeyTyped(RecipeItemInputHandler.java:23)
+	at codechicken.nei.guihook.GuiContainerManager.lastKeyTyped(GuiContainerManager.java:307)
+	at net.minecraft.client.gui.inventory.GuiContainer.keyTyped(GuiContainer.java)
+	at net.minecraft.client.gui.inventory.GuiContainer.public_func_73869_a(GuiContainer.java)
+	at codechicken.nei.guihook.GuiContainerManager.callKeyTyped(GuiContainerManager.java)
+	at codechicken.nei.guihook.GuiContainerManager.keyTyped(GuiContainerManager.java:475)
+	at codechicken.nei.guihook.GuiContainerManager.handleKeyboardInput(GuiContainerManager.java:465)
+	at net.minecraft.client.gui.inventory.GuiContainer.handleKeyboardInput(GuiContainer.java)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:321)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1731)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1039)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:962)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at java.util.ArrayList.rangeCheck(Unknown Source)
+	at java.util.ArrayList.get(Unknown Source)
+	at panda2134.CLG.integration.BCModule$BCRecipeManager.getExampleExpansions(BCModule.java:63)
+	at buildcraft.compat.nei.RecipeHandlerIntegrationTable$CachedIntegrationTableRecipe.<init>(RecipeHandlerIntegrationTable.java:120)
+	at buildcraft.compat.nei.RecipeHandlerIntegrationTable.createRecipe(RecipeHandlerIntegrationTable.java:78)
+	at buildcraft.compat.nei.RecipeHandlerIntegrationTable.loadCraftingRecipes(RecipeHandlerIntegrationTable.java:84)
+	at codechicken.nei.recipe.TemplateRecipeHandler.loadCraftingRecipes(TemplateRecipeHandler.java:327)
+	at buildcraft.compat.nei.RecipeHandlerBase.loadCraftingRecipes(RecipeHandlerBase.java:80)
+	at codechicken.nei.recipe.TemplateRecipeHandler.getRecipeHandler(TemplateRecipeHandler.java:465)
+	at codechicken.nei.recipe.GuiCraftingRecipe.openRecipeGui(GuiCraftingRecipe.java:20)
+	at codechicken.nei.recipe.RecipeItemInputHandler.lastKeyTyped(RecipeItemInputHandler.java:23)
+	at codechicken.nei.guihook.GuiContainerManager.lastKeyTyped(GuiContainerManager.java:307)
+	at net.minecraft.client.gui.inventory.GuiContainer.keyTyped(GuiContainer.java)
+	at net.minecraft.client.gui.inventory.GuiContainer.public_func_73869_a(GuiContainer.java)
+	at codechicken.nei.guihook.GuiContainerManager.callKeyTyped(GuiContainerManager.java)
+	at codechicken.nei.guihook.GuiContainerManager.keyTyped(GuiContainerManager.java:475)
+	at codechicken.nei.guihook.GuiContainerManager.handleKeyboardInput(GuiContainerManager.java:465)
+	at net.minecraft.client.gui.inventory.GuiContainer.handleKeyboardInput(GuiContainer.java)
+	at net.minecraft.client.gui.GuiScreen.handleInput(GuiScreen.java:321)
+
+-- Affected screen --
+Details:
+	Screen name: buildcraft.silicon.gui.GuiIntegrationTable
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player430'/293, l='MpServer', x=-1018.78, y=5.62, z=-1240.50]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (-1004,4,-1235), Chunk: (at 4,0,13 in -63,-78; contains blocks -1008,0,-1248 to -993,255,-1233), Region: (-2,-3; contains chunks -64,-96 to -33,-65, blocks -1024,0,-1536 to -513,255,-1025)
+	Level time: 340571 game time, 46666 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 145 total; [EntityClientPlayerMP['Player430'/293, l='MpServer', x=-1018.78, y=5.62, z=-1240.50], EntityChicken['鸡'/50, l='MpServer', x=-1091.63, y=4.00, z=-1304.41], EntitySheep['羊'/52, l='MpServer', x=-1093.38, y=4.00, z=-1289.28], EntityChicken['鸡'/53, l='MpServer', x=-1090.56, y=4.00, z=-1270.59], EntitySheep['羊'/57, l='MpServer', x=-1082.75, y=4.00, z=-1318.59], EntitySheep['羊'/59, l='MpServer', x=-1077.84, y=4.00, z=-1308.94], EntityPig['猪'/60, l='MpServer', x=-1078.78, y=4.00, z=-1306.38], EntityChicken['鸡'/61, l='MpServer', x=-1063.63, y=4.00, z=-1219.44], EntityPig['猪'/62, l='MpServer', x=-1080.03, y=4.00, z=-1215.69], EntityPig['猪'/63, l='MpServer', x=-1073.94, y=4.00, z=-1179.09], EntityChicken['鸡'/66, l='MpServer', x=-1069.38, y=4.00, z=-1290.59], EntityPig['猪'/67, l='MpServer', x=-1071.19, y=4.00, z=-1298.28], EntityChicken['鸡'/68, l='MpServer', x=-1057.47, y=4.00, z=-1308.47], EntityPig['猪'/69, l='MpServer', x=-1066.41, y=4.00, z=-1285.13], EntitySheep['羊'/70, l='MpServer', x=-1056.22, y=4.00, z=-1294.88], EntitySheep['羊'/71, l='MpServer', x=-1062.19, y=4.00, z=-1268.72], EntityChicken['鸡'/72, l='MpServer', x=-1066.44, y=4.00, z=-1264.63], EntityItem['item.item.egg'/73, l='MpServer', x=-1059.31, y=4.13, z=-1273.84], EntityCow['牛'/74, l='MpServer', x=-1065.06, y=4.00, z=-1201.22], EntityChicken['鸡'/75, l='MpServer', x=-1060.94, y=4.00, z=-1206.28], EntityItem['item.item.egg'/76, l='MpServer', x=-1071.72, y=4.13, z=-1210.22], EntityItem['item.item.egg'/77, l='MpServer', x=-1058.88, y=4.13, z=-1205.44], EntityChicken['鸡'/78, l='MpServer', x=-1062.47, y=4.00, z=-1210.44], EntitySheep['羊'/79, l='MpServer', x=-1064.34, y=4.00, z=-1191.75], EntityPig['猪'/80, l='MpServer', x=-1069.34, y=4.00, z=-1188.22], EntityPig['猪'/81, l='MpServer', x=-1064.91, y=4.00, z=-1200.03], EntitySheep['羊'/82, l='MpServer', x=-1066.56, y=4.00, z=-1182.41], EntityPig['猪'/83, l='MpServer', x=-1065.84, y=4.00, z=-1181.28], EntityChicken['鸡'/84, l='MpServer', x=-1057.56, y=4.00, z=-1180.28], EntitySheep['羊'/88, l='MpServer', x=-1046.81, y=4.00, z=-1313.16], EntitySheep['羊'/89, l='MpServer', x=-1045.19, y=4.00, z=-1299.84], EntitySheep['羊'/90, l='MpServer', x=-1049.34, y=4.00, z=-1280.84], EntityPig['猪'/91, l='MpServer', x=-1048.03, y=4.00, z=-1269.94], EntityChicken['鸡'/92, l='MpServer', x=-1053.44, y=4.00, z=-1241.47], EntityItem['item.item.egg'/93, l='MpServer', x=-1051.63, y=4.13, z=-1241.78], EntityItem['item.item.egg'/94, l='MpServer', x=-1043.97, y=4.13, z=-1219.84], EntityChicken['鸡'/95, l='MpServer', x=-1047.44, y=4.00, z=-1224.44], EntityChicken['鸡'/96, l='MpServer', x=-1053.56, y=4.00, z=-1213.53], EntityItem['item.item.egg'/97, l='MpServer', x=-1054.44, y=4.13, z=-1213.25], EntityPig['猪'/98, l='MpServer', x=-1037.84, y=4.00, z=-1181.84], EntityItem['item.item.egg'/99, l='MpServer', x=-1054.97, y=4.13, z=-1179.81], EntityPig['猪'/100, l='MpServer', x=-1044.84, y=4.00, z=-1176.63], EntityChicken['鸡'/111, l='MpServer', x=-1037.44, y=4.00, z=-1306.59], EntitySheep['羊'/112, l='MpServer', x=-1024.22, y=4.00, z=-1318.19], EntityCow['牛'/113, l='MpServer', x=-1033.81, y=4.00, z=-1316.84], EntityChicken['鸡'/114, l='MpServer', x=-1026.56, y=4.00, z=-1307.53], EntityChicken['鸡'/116, l='MpServer', x=-1026.44, y=4.00, z=-1267.66], EntityItem['item.item.egg'/117, l='MpServer', x=-1033.13, y=4.13, z=-1273.56], EntityItemFrame['entity.ItemFrame.name'/118, l='MpServer', x=-1026.94, y=8.50, z=-1216.50], EntityItemFrame['entity.ItemFrame.name'/119, l='MpServer', x=-1026.94, y=8.50, z=-1219.50], EntityItemFrame['entity.ItemFrame.name'/120, l='MpServer', x=-1026.94, y=8.50, z=-1201.50], EntityItemFrame['entity.ItemFrame.name'/121, l='MpServer', x=-1026.94, y=8.50, z=-1203.50], EntityItemFrame['entity.ItemFrame.name'/122, l='MpServer', x=-1026.94, y=7.50, z=-1203.50], EntityItemFrame['entity.ItemFrame.name'/123, l='MpServer', x=-1026.94, y=9.50, z=-1203.50], EntityItemFrame['entity.ItemFrame.name'/124, l='MpServer', x=-1026.94, y=9.50, z=-1204.50], EntityItemFrame['entity.ItemFrame.name'/125, l='MpServer', x=-1026.94, y=8.50, z=-1204.50], EntityItemFrame['entity.ItemFrame.name'/126, l='MpServer', x=-1026.94, y=7.50, z=-1204.50], EntityItemFrame['entity.ItemFrame.name'/127, l='MpServer', x=-1026.94, y=7.50, z=-1205.50], EntityItemFrame['entity.ItemFrame.name'/128, l='MpServer', x=-1026.94, y=8.50, z=-1205.50], EntityItemFrame['entity.ItemFrame.name'/129, l='MpServer', x=-1026.94, y=9.50, z=-1205.50], EntityItemFrame['entity.ItemFrame.name'/130, l='MpServer', x=-1026.94, y=8.50, z=-1207.50], EntityItemFrame['entity.ItemFrame.name'/131, l='MpServer', x=-1026.94, y=8.50, z=-1209.50], EntityItemFrame['entity.ItemFrame.name'/132, l='MpServer', x=-1026.94, y=7.50, z=-1209.50], EntityItemFrame['entity.ItemFrame.name'/133, l='MpServer', x=-1026.94, y=7.50, z=-1210.50], EntityItemFrame['entity.ItemFrame.name'/134, l='MpServer', x=-1026.94, y=7.50, z=-1211.50], EntityItemFrame['entity.ItemFrame.name'/135, l='MpServer', x=-1026.94, y=8.50, z=-1211.50], EntityItemFrame['entity.ItemFrame.name'/136, l='MpServer', x=-1026.94, y=8.50, z=-1210.50], EntityItemFrame['entity.ItemFrame.name'/137, l='MpServer', x=-1026.94, y=9.50, z=-1209.50], EntityItemFrame['entity.ItemFrame.name'/138, l='MpServer', x=-1026.94, y=9.50, z=-1210.50], EntityItemFrame['entity.ItemFrame.name'/139, l='MpServer', x=-1026.94, y=9.50, z=-1211.50], EntityItemFrame['entity.ItemFrame.name'/140, l='MpServer', x=-1026.94, y=8.50, z=-1213.50], EntityItemFrame['entity.ItemFrame.name'/141, l='MpServer', x=-1026.94, y=8.50, z=-1215.50], EntityItemFrame['entity.ItemFrame.name'/142, l='MpServer', x=-1026.94, y=8.50, z=-1189.50], EntityItemFrame['entity.ItemFrame.name'/143, l='MpServer', x=-1026.94, y=8.50, z=-1186.50], EntityItemFrame['entity.ItemFrame.name'/144, l='MpServer', x=-1026.94, y=8.50, z=-1185.50], EntityItemFrame['entity.ItemFrame.name'/145, l='MpServer', x=-1026.94, y=8.50, z=-1186.50], EntityItemFrame['entity.ItemFrame.name'/146, l='MpServer', x=-1026.94, y=8.50, z=-1187.50], EntityItemFrame['entity.ItemFrame.name'/147, l='MpServer', x=-1026.94, y=7.50, z=-1187.50], EntityItemFrame['entity.ItemFrame.name'/148, l='MpServer', x=-1026.94, y=7.50, z=-1186.50], EntityItemFrame['entity.ItemFrame.name'/149, l='MpServer', x=-1026.94, y=7.50, z=-1185.50], EntityItemFrame['entity.ItemFrame.name'/150, l='MpServer', x=-1026.94, y=9.50, z=-1185.50], EntityItemFrame['entity.ItemFrame.name'/151, l='MpServer', x=-1026.94, y=9.50, z=-1186.50], EntityItemFrame['entity.ItemFrame.name'/152, l='MpServer', x=-1026.94, y=9.50, z=-1187.50], EntityItemFrame['entity.ItemFrame.name'/153, l='MpServer', x=-1026.94, y=9.50, z=-1191.50], EntityItemFrame['entity.ItemFrame.name'/154, l='MpServer', x=-1026.94, y=8.50, z=-1191.50], EntityItemFrame['entity.ItemFrame.name'/155, l='MpServer', x=-1026.94, y=7.50, z=-1191.50], EntityItemFrame['entity.ItemFrame.name'/156, l='MpServer', x=-1026.94, y=7.50, z=-1192.50], EntityItemFrame['entity.ItemFrame.name'/157, l='MpServer', x=-1026.94, y=8.50, z=-1192.50], EntityItemFrame['entity.ItemFrame.name'/158, l='MpServer', x=-1026.94, y=9.50, z=-1192.50], EntityItemFrame['entity.ItemFrame.name'/159, l='MpServer', x=-1026.94, y=9.50, z=-1193.50], EntityItemFrame['entity.ItemFrame.name'/160, l='MpServer', x=-1026.94, y=8.50, z=-1193.50], EntityItemFrame['entity.ItemFrame.name'/161, l='MpServer', x=-1026.94, y=7.50, z=-1193.50], EntityItemFrame['entity.ItemFrame.name'/162, l='MpServer', x=-1026.94, y=8.50, z=-1195.50], EntityItemFrame['entity.ItemFrame.name'/163, l='MpServer', x=-1026.94, y=9.50, z=-1197.50], EntityItemFrame['entity.ItemFrame.name'/164, l='MpServer', x=-1026.94, y=8.50, z=-1197.50], EntityItemFrame['entity.ItemFrame.name'/165, l='MpServer', x=-1026.94, y=7.50, z=-1197.50], EntityItemFrame['entity.ItemFrame.name'/166, l='MpServer', x=-1026.94, y=7.50, z=-1198.50], EntityItemFrame['entity.ItemFrame.name'/167, l='MpServer', x=-1026.94, y=8.50, z=-1198.50], EntityItemFrame['entity.ItemFrame.name'/168, l='MpServer', x=-1026.94, y=9.50, z=-1198.50], EntityItemFrame['entity.ItemFrame.name'/169, l='MpServer', x=-1026.94, y=9.50, z=-1199.50], EntityItemFrame['entity.ItemFrame.name'/170, l='MpServer', x=-1026.94, y=8.50, z=-1199.50], EntityItemFrame['entity.ItemFrame.name'/171, l='MpServer', x=-1026.94, y=7.50, z=-1199.50], EntityHorse['马'/173, l='MpServer', x=-1035.34, y=4.00, z=-1163.75], EntitySheep['羊'/177, l='MpServer', x=-1024.16, y=4.00, z=-1314.13], EntityChicken['鸡'/178, l='MpServer', x=-1022.47, y=4.00, z=-1289.44], EntitySheep['羊'/179, l='MpServer', x=-1005.16, y=4.00, z=-1287.19], EntityItem['item.item.egg'/180, l='MpServer', x=-1021.84, y=4.13, z=-1287.34], EntityChicken['鸡'/181, l='MpServer', x=-1020.41, y=4.00, z=-1284.59], EntityChicken['鸡'/182, l='MpServer', x=-1011.59, y=4.00, z=-1277.38], EntityPig['猪'/190, l='MpServer', x=-995.69, y=4.00, z=-1312.88], EntitySheep['羊'/191, l='MpServer', x=-994.50, y=4.00, z=-1303.81], EntityHorse['马'/192, l='MpServer', x=-996.22, y=4.00, z=-1280.28], EntitySheep['羊'/193, l='MpServer', x=-1002.97, y=4.00, z=-1284.03], EntityItem['item.item.egg'/194, l='MpServer', x=-1006.69, y=4.13, z=-1290.94], EntityHorse['马'/195, l='MpServer', x=-998.50, y=4.00, z=-1185.16], EntityChicken['鸡'/196, l='MpServer', x=-1001.44, y=4.00, z=-1175.47], EntityChicken['鸡'/197, l='MpServer', x=-1000.56, y=4.00, z=-1179.59], EntityPig['猪'/198, l='MpServer', x=-989.97, y=4.00, z=-1184.06], EntityCow['牛'/206, l='MpServer', x=-983.09, y=4.00, z=-1306.28], EntitySheep['羊'/207, l='MpServer', x=-991.47, y=4.00, z=-1308.75], EntityPig['猪'/208, l='MpServer', x=-988.13, y=4.00, z=-1273.09], EntitySheep['羊'/209, l='MpServer', x=-978.38, y=4.00, z=-1239.25], EntityPig['猪'/210, l='MpServer', x=-985.16, y=4.00, z=-1235.94], EntityCow['牛'/211, l='MpServer', x=-982.97, y=4.00, z=-1184.94], EntityPig['猪'/212, l='MpServer', x=-983.22, y=4.00, z=-1181.28], EntityHorse['马'/213, l='MpServer', x=-982.97, y=4.00, z=-1162.41], EntityCow['牛'/214, l='MpServer', x=-977.97, y=4.00, z=-1166.09], EntitySheep['羊'/217, l='MpServer', x=-962.09, y=4.00, z=-1291.13], EntityCow['牛'/218, l='MpServer', x=-962.66, y=4.00, z=-1283.72], EntityPig['猪'/219, l='MpServer', x=-968.22, y=4.00, z=-1266.63], EntityCow['牛'/220, l='MpServer', x=-973.81, y=4.00, z=-1266.16], EntityPig['猪'/221, l='MpServer', x=-971.78, y=4.00, z=-1261.28], EntityCow['牛'/222, l='MpServer', x=-965.19, y=4.00, z=-1173.09], EntitySheep['羊'/223, l='MpServer', x=-970.31, y=4.00, z=-1174.19], EntityHorse['马'/224, l='MpServer', x=-971.00, y=4.00, z=-1161.50], EntityCow['牛'/233, l='MpServer', x=-954.78, y=4.00, z=-1282.88], EntityCow['牛'/234, l='MpServer', x=-955.50, y=4.00, z=-1289.41], EntityHorse['马'/235, l='MpServer', x=-948.19, y=4.00, z=-1279.56], EntityPig['猪'/236, l='MpServer', x=-958.81, y=4.00, z=-1253.28], EntityChicken['鸡'/237, l='MpServer', x=-961.44, y=4.00, z=-1200.56], EntityChicken['鸡'/239, l='MpServer', x=-958.44, y=4.00, z=-1179.47], EntityCow['牛'/241, l='MpServer', x=-942.41, y=4.00, z=-1312.72], EntityPig['猪'/247, l='MpServer', x=-942.13, y=4.00, z=-1241.97], EntityChicken['鸡'/250, l='MpServer', x=-938.13, y=4.00, z=-1169.59], EntityHorse['马'/253, l='MpServer', x=-936.56, y=4.00, z=-1164.00]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2566)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:984)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_45, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 752137312 bytes (717 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1492 33 mods loaded, 33 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1492} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Aroma1997Core{1.0.2.15} [Aroma1997Core] (Aroma1997Core-1.7.10-1.0.2.15.jar) 
+	UCHIJAAAA	CodeChickenCore{1.0.7.46} [CodeChicken Core] (minecraft.jar) 
+	UCHIJAAAA	NotEnoughItems{1.0.5.111} [Not Enough Items] (NotEnoughItems-1.7.10-1.0.5.111-universal.jar) 
+	UCHIJAAAA	<CoFH ASM>{000} [CoFH ASM] (minecraft.jar) 
+	UCHIJAAAA	CLG{@VERSION@} [Compact Lava Generator] (bin) 
+	UCHIJAAAA	factorization.notify{1.0} [Factorization Notification System] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.dimensionalSlice{0.8.98} [Factorization Dimensional Slices] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization{0.8.98} [Factorization] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.misc{0.8.98} [Factorization Miscellaneous Nonsense] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	CoFHCore{1.7.10R3.0.3} [CoFH Core] (CoFHCore-[1.7.10]3.0.3-303.jar) 
+	UCHIJAAAA	BuildCraft|Core{7.1.14} [BuildCraft] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Builders{7.1.14} [BC Builders] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Transport{7.1.14} [BC Transport] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Energy{7.1.14} [BC Energy] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Silicon{7.1.14} [BC Silicon] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Robotics{7.1.14} [BC Robotics] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Factory{7.1.14} [BC Factory] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	Aroma1997CoreHelper{1.0.2.15} [Aroma1997Core|Helper] (Aroma1997Core-1.7.10-1.0.2.15.jar) 
+	UCHIJAAAA	ThermalFoundation{1.7.10R1.2.0} [Thermal Foundation] (ThermalFoundation-[1.7.10]1.2.0-102.jar) 
+	UCHIJAAAA	ThermalExpansion{1.7.10R4.0.3B1} [Thermal Expansion] (ThermalExpansion-[1.7.10]4.0.3B1-218.jar) 
+	UCHIJAAAA	BuildCraft|Compat{7.1.3} [BuildCraft Compat] (buildcraft-compat-7.1.3.jar) 
+	UCHIJAAAA	EnderIO{1.7.10-2.2.8.381} [Ender IO] (EnderIO-1.7.10-2.2.8.381.jar) 
+	UCHIJAAAA	ExtraUtilities{1.2.10} [Extra Utilities] (extrautilities-1.2.10.jar) 
+	UCHIJAAAA	ImmersiveEngineering{0.6.0} [Immersive Engineering] (ImmersiveEngineering-0.6.0.jar) 
+	UCHIJAAAA	IC2{2.2.785-experimental} [IndustrialCraft 2] (industrialcraft-2-2.2.785-experimental-dev.jar) 
+	UCHIJAAAA	ItemRender{2.6} [Item Render] (ItemRender-2.6-mc1.7.10.jar) 
+	UCHIJAAAA	ThermalDynamics{1.7.10R1.1.0} [Thermal Dynamics] (ThermalDynamics-[1.7.10]1.1.0-161.jar) 
+	UCHIJAAAA	Uncomplication{0.1.1.0} [Uncomplication] (Uncomplication-1.7.10-0.1.1.0.jar) 
+	UCHIJAAAA	Waila{1.5.10} [Waila] (Waila-1.5.10_1.7.10.jar) 
+	UCHIJAAAA	worldedit{6.1.1-SNAPSHOT} [WorldEdit] (worldedit-forge-mc1.7.10-6.1.1-SNAPSHOT-dist.jar) 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 353.62' Renderer: 'GeForce GTX 860M/PCIe/SSE2'
+	CoFHCore: -[1.7.10]3.0.3-303
+	ThermalFoundation: -[1.7.10]1.2.0-102
+	ThermalExpansion: -[1.7.10]4.0.3B1-218
+	ThermalDynamics: -[1.7.10]1.1.0-161
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: GeForce GTX 860M/PCIe/SSE2 GL version 4.5.0 NVIDIA 353.62, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: 简体中文 (中国)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

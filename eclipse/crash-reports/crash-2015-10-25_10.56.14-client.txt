@@ -1,0 +1,146 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 15-10-25 ÉÏÎç10:56
+Description: Rendering entity in world
+
+java.lang.AssertionError: Hammer has been disabled by configuration
+	at factorization.fzds.DeltaChunk.assertEnabled(DeltaChunk.java:29)
+	at factorization.fzds.DeltaChunk.getDimensionId(DeltaChunk.java:151)
+	at factorization.fzds.HammerClientProxy.createClientShadowWorld(HammerClientProxy.java:137)
+	at factorization.fzds.DeltaChunk.getClientShadowWorld(DeltaChunk.java:82)
+	at factorization.servo.RenderServoMotor.doRender(RenderServoMotor.java:69)
+	at net.minecraft.client.renderer.entity.RenderManager.func_147939_a(RenderManager.java:300)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:278)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:251)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:527)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1300)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1087)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1067)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:962)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at factorization.fzds.DeltaChunk.assertEnabled(DeltaChunk.java:29)
+	at factorization.fzds.DeltaChunk.getDimensionId(DeltaChunk.java:151)
+	at factorization.fzds.HammerClientProxy.createClientShadowWorld(HammerClientProxy.java:137)
+	at factorization.fzds.DeltaChunk.getClientShadowWorld(DeltaChunk.java:82)
+	at factorization.servo.RenderServoMotor.doRender(RenderServoMotor.java:69)
+
+-- Entity being rendered --
+Details:
+	Entity Type: factorization.factory_servo (factorization.servo.ServoMotor)
+	Entity ID: 445089
+	Entity Name: entity.factorization.factory_servo.name
+	Entity's Exact location: 114.00, 45.00, -90.00
+	Entity's Block location: World: (114,45,-90), Chunk: (at 2,2,6 in 7,-6; contains blocks 112,0,-96 to 127,255,-81), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Entity's Momentum: 0.00, 0.00, 0.00
+
+-- Renderer details --
+Details:
+	Assigned renderer: factorization.servo.RenderServoMotor@37ca4e75
+	Location: -1.94,-1.62,-0.77 - World: (-2,-2,-1), Chunk: (at 14,-1,15 in -1,-1; contains blocks -16,0,-16 to -1,255,-1), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,0,-512 to -1,255,-1)
+	Rotation: 0.0
+	Delta: 0.26574695
+Stacktrace:
+	at net.minecraft.client.renderer.entity.RenderManager.func_147939_a(RenderManager.java:300)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:278)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntitySimple(RenderManager.java:251)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:527)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1300)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player835'/31, l='MpServer', x=115.94, y=46.62, z=-89.23]]
+	Chunk stats: MultiplayerChunkCache: 623, 623
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (8,64,8), Chunk: (at 8,4,8 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 4680 game time, 4680 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 48 total; [EntityPigZombie['Zombie Pigman'/419970, l='MpServer', x=118.31, y=69.00, z=-86.00], EntityPigZombie['Zombie Pigman'/419968, l='MpServer', x=129.69, y=71.08, z=-78.25], EntityPigZombie['Zombie Pigman'/433152, l='MpServer', x=159.75, y=76.00, z=-45.84], EntityPigZombie['Zombie Pigman'/419969, l='MpServer', x=132.25, y=71.00, z=-80.47], EntityPigZombie['Zombie Pigman'/419734, l='MpServer', x=152.59, y=75.00, z=-42.38], EntityPigZombie['Zombie Pigman'/435494, l='MpServer', x=66.66, y=86.00, z=-106.97], EntityPigZombie['Zombie Pigman'/435495, l='MpServer', x=60.47, y=86.00, z=-113.00], EntityPigZombie['Zombie Pigman'/441893, l='MpServer', x=186.22, y=83.00, z=-28.31], EntityPigZombie['Zombie Pigman'/419744, l='MpServer', x=68.50, y=99.00, z=-82.50], ServoMotor['entity.factorization.factory_servo.name'/445089, l='MpServer', x=114.00, y=45.00, z=-90.00], EntityPigZombie['Zombie Pigman'/441899, l='MpServer', x=186.50, y=82.00, z=-32.50], EntityPigZombie['Zombie Pigman'/435496, l='MpServer', x=65.63, y=86.00, z=-106.53], EntityPigZombie['Zombie Pigman'/441910, l='MpServer', x=52.31, y=78.00, z=-31.78], EntityPigZombie['Zombie Pigman'/441911, l='MpServer', x=32.28, y=78.00, z=-124.69], EntityPigZombie['Zombie Pigman'/441909, l='MpServer', x=51.34, y=80.00, z=-30.78], EntitySlime['Slime'/433459, l='MpServer', x=127.68, y=49.00, z=-75.31], EntityGhast['Ghast'/441905, l='MpServer', x=161.94, y=78.40, z=-45.64], EntityPigZombie['Zombie Pigman'/441918, l='MpServer', x=135.34, y=40.00, z=-67.91], EntityPigZombie['Zombie Pigman'/443582, l='MpServer', x=34.72, y=78.00, z=-121.88], EntityPigZombie['Zombie Pigman'/444222, l='MpServer', x=108.56, y=75.00, z=-168.95], EntityPigZombie['Zombie Pigman'/443583, l='MpServer', x=39.50, y=78.00, z=-125.50], EntityClientPlayerMP['Player835'/31, l='MpServer', x=115.94, y=46.62, z=-89.23], EntityPigZombie['Zombie Pigman'/441912, l='MpServer', x=42.59, y=79.00, z=-127.91], EntitySlime['Slime'/433465, l='MpServer', x=104.28, y=47.48, z=-90.41], EntityPigZombie['Zombie Pigman'/441913, l='MpServer', x=43.56, y=79.00, z=-128.53], EntityPigZombie['Zombie Pigman'/444230, l='MpServer', x=132.96, y=111.00, z=-71.45], EntityPigZombie['Zombie Pigman'/426311, l='MpServer', x=143.09, y=87.00, z=-102.69], EntityPigZombie['Zombie Pigman'/444228, l='MpServer', x=132.36, y=110.69, z=-70.59], EntityPigZombie['Zombie Pigman'/444229, l='MpServer', x=137.65, y=110.00, z=-72.07], EntityPigZombie['Zombie Pigman'/444227, l='MpServer', x=138.50, y=110.00, z=-76.50], EntityPigZombie['Zombie Pigman'/443584, l='MpServer', x=38.59, y=78.00, z=-125.59], EntityPigZombie['Zombie Pigman'/443592, l='MpServer', x=129.44, y=83.00, z=-44.75], EntityPigZombie['Zombie Pigman'/444244, l='MpServer', x=67.44, y=86.00, z=-104.50], EntityPigZombie['Zombie Pigman'/444245, l='MpServer', x=68.89, y=86.00, z=-99.98], EntityPigZombie['Zombie Pigman'/444242, l='MpServer', x=72.94, y=88.00, z=-102.97], EntityPigZombie['Zombie Pigman'/444243, l='MpServer', x=72.50, y=86.00, z=-99.50], EntityPigZombie['Zombie Pigman'/440415, l='MpServer', x=93.06, y=67.00, z=-131.13], EntityPigZombie['Zombie Pigman'/420060, l='MpServer', x=113.50, y=87.00, z=-158.50], EntityPigZombie['Zombie Pigman'/435822, l='MpServer', x=181.66, y=46.00, z=-53.06], EntityPigZombie['Zombie Pigman'/440430, l='MpServer', x=173.44, y=80.00, z=-20.50], EntityPigZombie['Zombie Pigman'/440431, l='MpServer', x=176.59, y=80.00, z=-20.41], EntityPigZombie['Zombie Pigman'/440429, l='MpServer', x=176.94, y=80.00, z=-22.16], EntityPigZombie['Zombie Pigman'/435828, l='MpServer', x=186.06, y=46.00, z=-51.06], EntityPigZombie['Zombie Pigman'/435829, l='MpServer', x=187.13, y=46.00, z=-51.84], EntityPigZombie['Zombie Pigman'/435826, l='MpServer', x=178.69, y=47.00, z=-55.16], EntityPigZombie['Zombie Pigman'/435827, l='MpServer', x=182.84, y=47.00, z=-49.88], EntityPigZombie['Zombie Pigman'/419966, l='MpServer', x=130.50, y=72.00, z=-74.69], EntityPigZombie['Zombie Pigman'/433150, l='MpServer', x=151.84, y=76.00, z=-39.84]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2566)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:984)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_45, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 595370088 bytes (567 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1492 18 mods loaded, 18 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1492} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	CodeChickenCore{1.0.7.46} [CodeChicken Core] (minecraft.jar) 
+	UCHIJAAAA	NotEnoughItems{1.0.5.111} [Not Enough Items] (NotEnoughItems-1.7.10-1.0.5.111-universal.jar) 
+	UCHIJAAAA	<CoFH ASM>{000} [CoFH ASM] (minecraft.jar) 
+	UCHIJAAAA	CLG{1.0.0-pre2} [Compact Lava Generator] (bin) 
+	UCHIJAAAA	factorization.notify{1.0} [Factorization Notification System] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.dimensionalSlice{0.8.98} [Factorization Dimensional Slices] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization{0.8.98} [Factorization] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.misc{0.8.98} [Factorization Miscellaneous Nonsense] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	CoFHCore{1.7.10R3.0.3} [CoFH Core] (CoFHCore-[1.7.10]3.0.3-303.jar) 
+	UCHIJAAAA	EnderIO{1.7.10-2.2.8.381} [Ender IO] (EnderIO-1.7.10-2.2.8.381.jar) 
+	UCHIJAAAA	IC2{2.2.785-experimental} [IndustrialCraft 2] (industrialcraft-2-2.2.785-experimental-dev.jar) 
+	UCHIJAAAA	ThermalFoundation{1.7.10R1.2.0} [Thermal Foundation] (ThermalFoundation-[1.7.10]1.2.0-102.jar) 
+	UCHIJAAAA	ThermalDynamics{1.7.10R1.1.0} [Thermal Dynamics] (ThermalDynamics-[1.7.10]1.1.0-161.jar) 
+	UCHIJAAAA	ThermalExpansion{1.7.10R4.0.3B1} [Thermal Expansion] (ThermalExpansion-[1.7.10]4.0.3B1-218.jar) 
+	UCHIJAAAA	Waila{1.5.10} [Waila] (Waila-1.5.10_1.7.10.jar) 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 353.62' Renderer: 'GeForce GTX 860M/PCIe/SSE2'
+	CoFHCore: -[1.7.10]3.0.3-303
+	ThermalFoundation: -[1.7.10]1.2.0-102
+	ThermalDynamics: -[1.7.10]1.1.0-161
+	ThermalExpansion: -[1.7.10]4.0.3B1-218
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: GeForce GTX 860M/PCIe/SSE2 GL version 4.5.0 NVIDIA 353.62, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

@@ -82,9 +82,11 @@ public class TileEntityCLGController extends TileEntityBase implements
 	public boolean isStructureComplete() {
 
 		World world = this.getWorldObj();
+
 		boolean state = GeneratorMultiblockHelper.checkPattern(
 				CLGReference.CLGPattern, world, xCoord, yCoord, zCoord, 1, 1,
 				0, Blocks.blockController.getUnlocalizedName());
+
 		return state;
 	}
 
@@ -155,7 +157,6 @@ public class TileEntityCLGController extends TileEntityBase implements
 		if (!formed)
 			this.storage = 0.0D;
 		this.sendChange();
-
 	}
 
 	public void sendChange() {

@@ -1,0 +1,96 @@
+---- Minecraft Crash Report ----
+// I just don't know what went wrong :(
+
+Time: 15-10-19 ÏÂÎç9:41
+Description: Multiblock Error
+
+java.lang.Exception: Argument "side" illegal
+	at panda2134.CLG.util.GeneratorMultiblockHelper.getCheckCenterX(GeneratorMultiblockHelper.java:40)
+	at panda2134.CLG.util.GeneratorMultiblockHelper.checkPattern(GeneratorMultiblockHelper.java:52)
+	at panda2134.CLG.tileentity.TileEntityCLGController.isStructureComplete(TileEntityCLGController.java:73)
+	at panda2134.CLG.tileentity.TileEntityCLGController.updateState(TileEntityCLGController.java:103)
+	at panda2134.CLG.tileentity.TileEntityCLGController.validate(TileEntityCLGController.java:30)
+	at net.minecraft.world.chunk.Chunk.func_150812_a(Chunk.java:969)
+	at net.minecraft.world.World.setTileEntity(World.java:2868)
+	at net.minecraft.world.chunk.Chunk.func_150806_e(Chunk.java:934)
+	at net.minecraft.world.chunk.Chunk.func_150807_a(Chunk.java:718)
+	at net.minecraft.world.World.setBlock(World.java:519)
+	at net.minecraft.item.ItemBlock.placeBlockAt(ItemBlock.java:232)
+	at net.minecraft.item.ItemBlock.onItemUse(ItemBlock.java:116)
+	at net.minecraftforge.common.ForgeHooks.onPlaceItemIntoWorld(ForgeHooks.java:507)
+	at net.minecraft.item.ItemStack.tryPlaceItemIntoWorld(ItemStack.java:142)
+	at net.minecraft.server.management.ItemInWorldManager.activateBlockOrUseItem(ItemInWorldManager.java:422)
+	at net.minecraft.network.NetHandlerPlayServer.processPlayerBlockPlacement(NetHandlerPlayServer.java:593)
+	at net.minecraft.network.play.client.C08PacketPlayerBlockPlacement.processPacket(C08PacketPlayerBlockPlacement.java:74)
+	at net.minecraft.network.play.client.C08PacketPlayerBlockPlacement.processPacket(C08PacketPlayerBlockPlacement.java:122)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:241)
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:182)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:726)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at panda2134.CLG.util.GeneratorMultiblockHelper.getCheckCenterX(GeneratorMultiblockHelper.java:40)
+	at panda2134.CLG.util.GeneratorMultiblockHelper.checkPattern(GeneratorMultiblockHelper.java:52)
+	at panda2134.CLG.tileentity.TileEntityCLGController.isStructureComplete(TileEntityCLGController.java:73)
+	at panda2134.CLG.tileentity.TileEntityCLGController.updateState(TileEntityCLGController.java:103)
+	at panda2134.CLG.tileentity.TileEntityCLGController.validate(TileEntityCLGController.java:30)
+	at net.minecraft.world.chunk.Chunk.func_150812_a(Chunk.java:969)
+	at net.minecraft.world.World.setTileEntity(World.java:2868)
+	at net.minecraft.world.chunk.Chunk.func_150806_e(Chunk.java:934)
+	at net.minecraft.world.chunk.Chunk.func_150807_a(Chunk.java:718)
+	at net.minecraft.world.World.setBlock(World.java:519)
+	at net.minecraft.item.ItemBlock.placeBlockAt(ItemBlock.java:232)
+	at net.minecraft.item.ItemBlock.onItemUse(ItemBlock.java:116)
+	at net.minecraftforge.common.ForgeHooks.onPlaceItemIntoWorld(ForgeHooks.java:507)
+	at net.minecraft.item.ItemStack.tryPlaceItemIntoWorld(ItemStack.java:142)
+	at net.minecraft.server.management.ItemInWorldManager.activateBlockOrUseItem(ItemInWorldManager.java:422)
+	at net.minecraft.network.NetHandlerPlayServer.processPlayerBlockPlacement(NetHandlerPlayServer.java:593)
+	at net.minecraft.network.play.client.C08PacketPlayerBlockPlacement.processPacket(C08PacketPlayerBlockPlacement.java:74)
+	at net.minecraft.network.play.client.C08PacketPlayerBlockPlacement.processPacket(C08PacketPlayerBlockPlacement.java:122)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:241)
+
+-- Ticking connection --
+Details:
+	Connection: net.minecraft.network.NetworkManager@2035407e
+Stacktrace:
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:182)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:726)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_45, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 606726360 bytes (578 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1492 8 mods loaded, 8 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1492} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	CodeChickenCore{1.0.7.46} [CodeChicken Core] (minecraft.jar) 
+	UCHIJAAAA	NotEnoughItems{1.0.5.111} [Not Enough Items] (NotEnoughItems-1.7.10-1.0.5.111-universal.jar) 
+	UCHIJAAAA	CLG{0.0.1} [Compact Lava Generator] (bin) 
+	UCHIJAAAA	IC2{2.2.785-experimental} [IndustrialCraft 2] (industrialcraft-2-2.2.785-experimental-dev.jar) 
+	UCHIJAAAA	Waila{1.5.10} [Waila] (Waila-1.5.10_1.7.10.jar) 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Player Count: 1 / 8; [EntityPlayerMP['Player329'/211, l='Test World', x=1940.45, y=4.00, z=-417.08]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

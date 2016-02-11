@@ -102,6 +102,7 @@ public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
 
 	@Override
 	public void updateEntity() {
+		// long t1 = System.currentTimeMillis();
 		if (!init) {
 			init = true;
 			this.doInit();
@@ -112,6 +113,8 @@ public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
 		if (unit != null && unit.equals(EnergyUnit.RF)
 				&& Mods.cofhApiEnergy.available)
 			outputRF();
+		// long t2 = System.currentTimeMillis();
+		// FMLLog.info("Hatch:%d", t2 - t1);
 	}
 
 	private void doInit() {

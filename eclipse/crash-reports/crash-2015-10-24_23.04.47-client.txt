@@ -1,0 +1,150 @@
+---- Minecraft Crash Report ----
+// Sorry :(
+
+Time: 15-10-24 ÏÂÎç11:04
+Description: Unexpected error
+
+java.lang.Error: Unresolved compilation problems: 
+	The import factorization cannot be resolved
+	The import factorization cannot be resolved
+	The import factorization cannot be resolved
+	IChargeConductor cannot be resolved to a type
+	Charge cannot be resolved to a type
+	Charge cannot be resolved to a type
+	Charge cannot be resolved to a type
+	Charge cannot be resolved to a type
+	Charge cannot be resolved to a type
+	Coord cannot be resolved to a type
+	The method getCoord() of type TileEntityEnergyHatch must override or implement a supertype method
+	Coord cannot be resolved to a type
+	The method getInfo() of type TileEntityEnergyHatch must override or implement a supertype method
+	Charge cannot be resolved to a type
+	The method getCharge() of type TileEntityEnergyHatch must override or implement a supertype method
+	Charge cannot be resolved to a type
+
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.<init>(TileEntityEnergyHatch.java:10)
+	at panda2134.CLG.block.CLGEnergyHatch.createNewTileEntity(CLGEnergyHatch.java:77)
+	at net.minecraft.block.Block.createTileEntity(Block.java:1775)
+	at net.minecraft.world.chunk.Chunk.func_150806_e(Chunk.java:933)
+	at net.minecraft.world.World.getTileEntity(World.java:2808)
+	at mcp.mobius.waila.api.impl.DataAccessorCommon.set(DataAccessorCommon.java:52)
+	at mcp.mobius.waila.api.impl.DataAccessorCommon.set(DataAccessorCommon.java:41)
+	at mcp.mobius.waila.overlay.WailaTickHandler.tickClient(WailaTickHandler.java:75)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_176_WailaTickHandler_tickClient_ClientTickEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:138)
+	at cpw.mods.fml.common.FMLCommonHandler.onPostClientTick(FMLCommonHandler.java:330)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:2155)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1039)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:962)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.<init>(TileEntityEnergyHatch.java:10)
+	at panda2134.CLG.block.CLGEnergyHatch.createNewTileEntity(CLGEnergyHatch.java:77)
+	at net.minecraft.block.Block.createTileEntity(Block.java:1775)
+	at net.minecraft.world.chunk.Chunk.func_150806_e(Chunk.java:933)
+	at net.minecraft.world.World.getTileEntity(World.java:2808)
+	at mcp.mobius.waila.api.impl.DataAccessorCommon.set(DataAccessorCommon.java:52)
+	at mcp.mobius.waila.api.impl.DataAccessorCommon.set(DataAccessorCommon.java:41)
+	at mcp.mobius.waila.overlay.WailaTickHandler.tickClient(WailaTickHandler.java:75)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_176_WailaTickHandler_tickClient_ClientTickEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:138)
+	at cpw.mods.fml.common.FMLCommonHandler.onPostClientTick(FMLCommonHandler.java:330)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityClientPlayerMP['Player443'/202, l='MpServer', x=-97.66, y=5.62, z=812.93]]
+	Chunk stats: MultiplayerChunkCache: 335, 335
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (-104,4,812), Chunk: (at 8,0,12 in -7,50; contains blocks -112,0,800 to -97,255,815), Region: (-1,1; contains chunks -32,32 to -1,63, blocks -512,0,512 to -1,255,1023)
+	Level time: 527 game time, 527 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 74 total; [EntityChicken['Chicken'/128, l='MpServer', x=-37.50, y=4.00, z=838.50], EntityChicken['Chicken'/129, l='MpServer', x=-39.50, y=4.00, z=839.50], EntityChicken['Chicken'/130, l='MpServer', x=-32.63, y=4.00, z=836.69], EntitySlime['Slime'/134, l='MpServer', x=-21.88, y=4.00, z=766.28], EntityPig['Pig'/135, l='MpServer', x=-23.50, y=4.00, z=796.50], EntityPig['Pig'/136, l='MpServer', x=-25.38, y=4.00, z=799.63], EntityPig['Pig'/137, l='MpServer', x=-27.63, y=4.00, z=799.63], EntityPig['Pig'/138, l='MpServer', x=-26.50, y=4.00, z=798.16], EntityPig['Pig'/139, l='MpServer', x=-24.75, y=4.00, z=793.78], EntityPig['Pig'/140, l='MpServer', x=-20.81, y=4.00, z=795.69], EntityPig['Pig'/141, l='MpServer', x=-20.50, y=4.00, z=792.50], EntityPig['Pig'/142, l='MpServer', x=-20.19, y=4.00, z=797.63], EntityCow['Cow'/143, l='MpServer', x=-25.50, y=4.00, z=802.50], EntityCow['Cow'/144, l='MpServer', x=-27.50, y=4.00, z=803.50], EntityCow['Cow'/145, l='MpServer', x=-23.50, y=4.00, z=805.50], EntityCow['Cow'/146, l='MpServer', x=-23.50, y=4.00, z=803.50], EntitySheep['Sheep'/147, l='MpServer', x=-31.50, y=4.00, z=847.50], EntityHorse['Horse'/148, l='MpServer', x=-30.50, y=4.00, z=836.50], EntitySlime['Slime'/149, l='MpServer', x=-20.06, y=4.00, z=838.66], EntitySheep['Sheep'/150, l='MpServer', x=-31.97, y=4.00, z=835.81], EntityCow['Cow'/38, l='MpServer', x=-177.50, y=4.00, z=844.78], EntityPig['Pig'/39, l='MpServer', x=-177.50, y=4.00, z=846.50], EntityPig['Pig'/40, l='MpServer', x=-177.50, y=4.00, z=843.19], EntityPig['Pig'/43, l='MpServer', x=-177.50, y=4.00, z=851.50], EntitySlime['Slime'/22571, l='MpServer', x=-19.50, y=4.00, z=739.50], EntityCow['Cow'/45, l='MpServer', x=-175.50, y=4.00, z=843.50], EntityPig['Pig'/46, l='MpServer', x=-169.19, y=4.00, z=836.38], EntityPig['Pig'/47, l='MpServer', x=-161.50, y=4.00, z=867.50], EntityPig['Pig'/48, l='MpServer', x=-160.50, y=4.00, z=869.22], EntityPig['Pig'/49, l='MpServer', x=-160.50, y=4.00, z=873.22], EntitySheep['Sheep'/50, l='MpServer', x=-163.50, y=4.00, z=877.50], EntityPig['Pig'/51, l='MpServer', x=-160.50, y=4.00, z=870.81], EntityPig['Pig'/52, l='MpServer', x=-162.50, y=4.00, z=873.50], EntityPig['Pig'/53, l='MpServer', x=-160.50, y=4.00, z=874.81], EntitySlime['Slime'/56, l='MpServer', x=-144.41, y=4.00, z=774.78], EntityCow['Cow'/57, l='MpServer', x=-153.78, y=4.00, z=797.50], EntityCow['Cow'/58, l='MpServer', x=-146.41, y=4.00, z=798.44], EntityPig['Pig'/59, l='MpServer', x=-149.81, y=4.00, z=796.19], EntityPig['Pig'/60, l='MpServer', x=-152.19, y=4.00, z=797.50], EntityCow['Cow'/61, l='MpServer', x=-147.28, y=4.00, z=800.88], EntityChicken['Chicken'/62, l='MpServer', x=-146.03, y=4.00, z=800.91], EntityChicken['Chicken'/63, l='MpServer', x=-150.50, y=4.00, z=803.50], EntityChicken['Chicken'/64, l='MpServer', x=-150.50, y=4.00, z=804.50], EntityPig['Pig'/65, l='MpServer', x=-152.75, y=4.00, z=800.44], EntityPig['Pig'/66, l='MpServer', x=-150.47, y=4.00, z=801.19], EntityChicken['Chicken'/67, l='MpServer', x=-151.81, y=4.00, z=801.06], EntityCow['Cow'/68, l='MpServer', x=-146.03, y=4.00, z=799.84], EntityPig['Pig'/69, l='MpServer', x=-157.63, y=4.00, z=871.78], EntitySheep['Sheep'/70, l='MpServer', x=-156.50, y=4.00, z=873.22], EntitySheep['Sheep'/71, l='MpServer', x=-156.50, y=4.00, z=874.81], EntityPig['Pig'/72, l='MpServer', x=-156.44, y=4.00, z=870.59], EntitySheep['Sheep'/73, l='MpServer', x=-158.22, y=4.00, z=876.28], EntitySlime['Slime'/74, l='MpServer', x=-146.03, y=5.22, z=885.38], EntitySlime['Slime'/78, l='MpServer', x=-135.91, y=4.00, z=797.38], EntitySlime['Slime'/80, l='MpServer', x=-120.94, y=4.75, z=766.66], EntitySlime['Slime'/81, l='MpServer', x=-126.69, y=4.00, z=756.66], EntitySlime['Slime'/82, l='MpServer', x=-116.75, y=4.00, z=768.38], EntitySlime['Slime'/83, l='MpServer', x=-118.50, y=4.00, z=867.50], EntityClientPlayerMP['Player443'/202, l='MpServer', x=-97.66, y=5.62, z=812.93], EntitySlime['Slime'/84, l='MpServer', x=-121.06, y=4.47, z=886.88], EntityPig['Pig'/88, l='MpServer', x=-106.50, y=4.00, z=748.50], EntityPig['Pig'/89, l='MpServer', x=-103.50, y=4.00, z=745.50], EntityPig['Pig'/90, l='MpServer', x=-101.50, y=4.00, z=747.50], EntityPig['Pig'/91, l='MpServer', x=-99.50, y=4.00, z=750.50], EntityChicken['Chicken'/92, l='MpServer', x=-106.50, y=4.00, z=749.50], EntityChicken['Chicken'/93, l='MpServer', x=-112.66, y=4.00, z=742.06], EntityChicken['Chicken'/94, l='MpServer', x=-107.50, y=4.00, z=743.50], EntityHorse['Horse'/95, l='MpServer', x=-103.50, y=4.00, z=752.50], EntityHorse['Horse'/96, l='MpServer', x=-104.50, y=4.00, z=755.50], EntitySlime['Slime'/97, l='MpServer', x=-102.94, y=4.00, z=774.31], EntitySheep['Sheep'/125, l='MpServer', x=-32.13, y=4.00, z=838.59], EntitySlime['Slime'/1789, l='MpServer', x=-31.50, y=4.00, z=876.50], EntitySheep['Sheep'/126, l='MpServer', x=-32.50, y=4.00, z=843.50], EntityChicken['Chicken'/127, l='MpServer', x=-37.50, y=4.00, z=839.50]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:415)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2566)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:991)
+	at net.minecraft.client.main.Main.main(Main.java:164)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(Unknown Source)
+	at GradleStart.main(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 7 (amd64) version 6.1
+	Java Version: 1.8.0_45, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 642247400 bytes (612 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1492 18 mods loaded, 18 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1492} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	CodeChickenCore{1.0.7.46} [CodeChicken Core] (minecraft.jar) 
+	UCHIJAAAA	NotEnoughItems{1.0.5.111} [Not Enough Items] (NotEnoughItems-1.7.10-1.0.5.111-universal.jar) 
+	UCHIJAAAA	<CoFH ASM>{000} [CoFH ASM] (minecraft.jar) 
+	UCHIJAAAA	CLG{1.0.0-pre2} [Compact Lava Generator] (bin) 
+	UCHIJAAAA	CoFHCore{1.7.10R3.0.3} [CoFH Core] (CoFHCore-[1.7.10]3.0.3-303.jar) 
+	UCHIJAAAA	EnderIO{1.7.10-2.2.8.381} [Ender IO] (EnderIO-1.7.10-2.2.8.381.jar) 
+	UCHIJAAAA	factorization.notify{1.0} [Factorization Notification System] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.dimensionalSlice{0.8.98} [Factorization Dimensional Slices] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization{0.8.98} [Factorization] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.misc{0.8.98} [Factorization Miscellaneous Nonsense] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	IC2{2.2.785-experimental} [IndustrialCraft 2] (industrialcraft-2-2.2.785-experimental-dev.jar) 
+	UCHIJAAAA	ThermalFoundation{1.7.10R1.2.0} [Thermal Foundation] (ThermalFoundation-[1.7.10]1.2.0-102.jar) 
+	UCHIJAAAA	ThermalDynamics{1.7.10R1.1.0} [Thermal Dynamics] (ThermalDynamics-[1.7.10]1.1.0-161.jar) 
+	UCHIJAAAA	ThermalExpansion{1.7.10R4.0.3B1} [Thermal Expansion] (ThermalExpansion-[1.7.10]4.0.3B1-218.jar) 
+	UCHIJAAAA	Waila{1.5.10} [Waila] (Waila-1.5.10_1.7.10.jar) 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.5.0 NVIDIA 353.62' Renderer: 'GeForce GTX 860M/PCIe/SSE2'
+	CoFHCore: -[1.7.10]3.0.3-303
+	ThermalFoundation: -[1.7.10]1.2.0-102
+	ThermalDynamics: -[1.7.10]1.1.0-161
+	ThermalExpansion: -[1.7.10]4.0.3B1-218
+	Launched Version: 1.7.10
+	LWJGL: 2.9.1
+	OpenGL: GeForce GTX 860M/PCIe/SSE2 GL version 4.5.0 NVIDIA 353.62, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Anisotropic filtering is supported and maximum anisotropy is 16.
+Shaders are available because OpenGL 2.1 is supported.
+
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: []
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Anisotropic Filtering: Off (1)

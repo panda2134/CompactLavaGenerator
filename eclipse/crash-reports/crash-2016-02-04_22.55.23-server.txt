@@ -1,0 +1,148 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 16-2-4 下午10:55
+Description: Exception while updating neighbours
+
+java.lang.Error: Unresolved compilation problem: 
+	The method updateState(boolean) in the type TileEntityCLGController is not applicable for the arguments ()
+
+	at panda2134.CLG.block.CLGController.onNeighborBlockChange(CLGController.java:85)
+	at net.minecraft.world.World.notifyBlockOfNeighborChange(World.java:787)
+	at net.minecraft.world.World.notifyBlocksOfNeighborChange(World.java:739)
+	at net.minecraft.world.World.notifyBlockChange(World.java:697)
+	at aroma1997.uncomplication.enet.EnergyNetLocal.update(EnergyNetLocal.java:844)
+	at aroma1997.uncomplication.enet.EnergyNetLocal.addTileEntity(EnergyNetLocal.java:84)
+	at aroma1997.uncomplication.enet.EnergyNetLocal.addTile(EnergyNetLocal.java:73)
+	at aroma1997.uncomplication.enet.EventHandler.onEnergyTileLoad(EventHandler.java:36)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_286_EventHandler_onEnergyTileLoad_EnergyTileLoadEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:138)
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.loadTile(TileEntityEnergyHatch.java:147)
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.doInit(TileEntityEnergyHatch.java:122)
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.updateEntity(TileEntityEnergyHatch.java:107)
+	at net.minecraft.world.World.updateEntities(World.java:2160)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:515)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:703)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at panda2134.CLG.block.CLGController.onNeighborBlockChange(CLGController.java:85)
+
+-- Block being updated --
+Details:
+	Source block type: ID #0 (tile.air // net.minecraft.block.BlockAir)
+	Block type: ID #165 (tile.CLGController // panda2134.CLG.block.CLGController)
+	Block data value: 12 / 0xC / 0b1100
+	Block location: World: (268,32,-57), Chunk: (at 12,2,7 in 16,-4; contains blocks 256,0,-64 to 271,255,-49), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+Stacktrace:
+	at net.minecraft.world.World.notifyBlockOfNeighborChange(World.java:787)
+	at net.minecraft.world.World.notifyBlocksOfNeighborChange(World.java:739)
+	at net.minecraft.world.World.notifyBlockChange(World.java:697)
+	at aroma1997.uncomplication.enet.EnergyNetLocal.update(EnergyNetLocal.java:844)
+	at aroma1997.uncomplication.enet.EnergyNetLocal.addTileEntity(EnergyNetLocal.java:84)
+	at aroma1997.uncomplication.enet.EnergyNetLocal.addTile(EnergyNetLocal.java:73)
+	at aroma1997.uncomplication.enet.EventHandler.onEnergyTileLoad(EventHandler.java:36)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler_286_EventHandler_onEnergyTileLoad_EnergyTileLoadEvent.invoke(.dynamic)
+	at cpw.mods.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:54)
+	at cpw.mods.fml.common.eventhandler.EventBus.post(EventBus.java:138)
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.loadTile(TileEntityEnergyHatch.java:147)
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.doInit(TileEntityEnergyHatch.java:122)
+	at panda2134.CLG.tileentity.TileEntityEnergyHatch.updateEntity(TileEntityEnergyHatch.java:107)
+
+-- Block entity being ticked --
+Details:
+	Name: TileEntityEnergyHatch // panda2134.CLG.tileentity.TileEntityEnergyHatch
+	Block type: ID #169 (tile.CLGEnergyHatch // panda2134.CLG.block.CLGEnergyHatch)
+	Block data value: 4 / 0x4 / 0b0100
+	Block location: World: (268,33,-56), Chunk: (at 12,2,8 in 16,-4; contains blocks 256,0,-64 to 271,255,-49), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Actual block type: ID #169 (tile.CLGEnergyHatch // panda2134.CLG.block.CLGEnergyHatch)
+	Actual block data value: 4 / 0x4 / 0b0100
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:2160)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:515)
+
+-- Affected level --
+Details:
+	Level name: Photo World
+	All players: 1 total; [EntityPlayerMP['Player770'/208, l='Photo World', x=262.70, y=33.09, z=-58.38]]
+	Chunk stats: ServerChunkCache: 627 Drop: 0
+	Level seed: 7641512589700846222
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (0,0,0), Chunk: (at 0,0,0 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 0 game time, 0 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:703)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:614)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:118)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:485)
+	at net.minecraft.server.MinecraftServer$2.run(MinecraftServer.java:752)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.7.10
+	Operating System: Windows 8.1 (amd64) version 6.3
+	Java Version: 1.8.0_45, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 534341032 bytes (509 MB) / 1037959168 bytes (989 MB) up to 1037959168 bytes (989 MB)
+	JVM Flags: 3 total; -Xincgc -Xmx1024M -Xms1024M
+	AABB Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP v9.05 FML v7.10.99.99 Minecraft Forge 10.13.4.1492 33 mods loaded, 33 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	mcp{9.05} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{7.10.99.99} [Forge Mod Loader] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Forge{10.13.4.1492} [Minecraft Forge] (forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar) 
+	UCHIJAAAA	Aroma1997Core{1.0.2.15} [Aroma1997Core] (Aroma1997Core-1.7.10-1.0.2.15.jar) 
+	UCHIJAAAA	CodeChickenCore{1.0.7.46} [CodeChicken Core] (minecraft.jar) 
+	UCHIJAAAA	NotEnoughItems{1.0.5.111} [Not Enough Items] (NotEnoughItems-1.7.10-1.0.5.111-universal.jar) 
+	UCHIJAAAA	<CoFH ASM>{000} [CoFH ASM] (minecraft.jar) 
+	UCHIJAAAA	CLG{@VERSION@} [Compact Lava Generator] (bin) 
+	UCHIJAAAA	factorization.notify{1.0} [Factorization Notification System] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.dimensionalSlice{0.8.98} [Factorization Dimensional Slices] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization{0.8.98} [Factorization] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	factorization.misc{0.8.98} [Factorization Miscellaneous Nonsense] (Factorization-1.7.10-0.8.98-dev.jar) 
+	UCHIJAAAA	CoFHCore{1.7.10R3.0.3} [CoFH Core] (CoFHCore-[1.7.10]3.0.3-303.jar) 
+	UCHIJAAAA	BuildCraft|Core{7.1.14} [BuildCraft] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Builders{7.1.14} [BC Builders] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Transport{7.1.14} [BC Transport] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Energy{7.1.14} [BC Energy] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Silicon{7.1.14} [BC Silicon] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Robotics{7.1.14} [BC Robotics] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	BuildCraft|Factory{7.1.14} [BC Factory] (buildcraft-7.1.14-dev.jar) 
+	UCHIJAAAA	Aroma1997CoreHelper{1.0.2.15} [Aroma1997Core|Helper] (Aroma1997Core-1.7.10-1.0.2.15.jar) 
+	UCHIJAAAA	ThermalFoundation{1.7.10R1.2.0} [Thermal Foundation] (ThermalFoundation-[1.7.10]1.2.0-102.jar) 
+	UCHIJAAAA	ThermalExpansion{1.7.10R4.0.3B1} [Thermal Expansion] (ThermalExpansion-[1.7.10]4.0.3B1-218.jar) 
+	UCHIJAAAA	BuildCraft|Compat{7.1.3} [BuildCraft Compat] (buildcraft-compat-7.1.3.jar) 
+	UCHIJAAAA	EnderIO{1.7.10-2.2.8.381} [Ender IO] (EnderIO-1.7.10-2.2.8.381.jar) 
+	UCHIJAAAA	ExtraUtilities{1.2.10} [Extra Utilities] (extrautilities-1.2.10.jar) 
+	UCHIJAAAA	ImmersiveEngineering{0.6.0} [Immersive Engineering] (ImmersiveEngineering-0.6.0.jar) 
+	UCHIJAAAA	IC2{2.2.785-experimental} [IndustrialCraft 2] (industrialcraft-2-2.2.785-experimental-dev.jar) 
+	UCHIJAAAA	ItemRender{2.6} [Item Render] (ItemRender-2.6-mc1.7.10.jar) 
+	UCHIJAAAA	ThermalDynamics{1.7.10R1.1.0} [Thermal Dynamics] (ThermalDynamics-[1.7.10]1.1.0-161.jar) 
+	UCHIJAAAA	Uncomplication{0.1.1.0} [Uncomplication] (Uncomplication-1.7.10-0.1.1.0.jar) 
+	UCHIJAAAA	Waila{1.5.10} [Waila] (Waila-1.5.10_1.7.10.jar) 
+	UCHIJAAAA	worldedit{6.1.1-SNAPSHOT} [WorldEdit] (worldedit-forge-mc1.7.10-6.1.1-SNAPSHOT-dist.jar) 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	CoFHCore: -[1.7.10]3.0.3-303
+	ThermalFoundation: -[1.7.10]1.2.0-102
+	ThermalExpansion: -[1.7.10]4.0.3B1-218
+	ThermalDynamics: -[1.7.10]1.1.0-161
+	Profiler Position: N/A (disabled)
+	Vec3 Pool Size: 0 (0 bytes; 0 MB) allocated, 0 (0 bytes; 0 MB) used
+	Player Count: 1 / 8; [EntityPlayerMP['Player770'/208, l='Photo World', x=262.70, y=33.09, z=-58.38]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
