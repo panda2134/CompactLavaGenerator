@@ -3,8 +3,11 @@ package panda2134.CLG.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import panda2134.CLG.CLGMod;
+import panda2134.CLG.tileentity.TileEntityCLGPump;
 import panda2134.CLG.util.CLGReference;
 
 public class CLGLavaPump extends Block {
@@ -43,4 +46,17 @@ public class CLGLavaPump extends Block {
 	public int getMobilityFlag() {
 		return 2;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.minecraft.block.Block#createTileEntity(net.minecraft.world.World,
+	 * int)
+	 */
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
+		return new TileEntityCLGPump();
+	}
+
 }

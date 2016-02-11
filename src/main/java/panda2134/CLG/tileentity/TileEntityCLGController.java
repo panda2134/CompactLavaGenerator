@@ -120,7 +120,6 @@ public class TileEntityCLGController extends TileEntityBase implements
 				this.output = this.outputLimit;
 			else
 				this.output = this.storage;
-
 			this.storage -= GeneratorMultiblockHelper.outputToHatch(worldObj,
 					CLGReference.CLGPattern, output, countOfHatch, xCoord,
 					yCoord, zCoord, 1, 1, 0, formed);
