@@ -16,9 +16,6 @@ public class TileEntityCLGController extends TileEntityBase implements
 	public double generating, outputLimit, output, storage;
 	public int timeToCheck;
 	public boolean init;
-	public int toNextUpdate = 20;
-	public boolean doWait = true;
-	public boolean forceNotFormed = false;
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
@@ -124,6 +121,8 @@ public class TileEntityCLGController extends TileEntityBase implements
 			else
 				this.output = this.storage;
 			// output
+			// TODO
+
 			this.storage -= GeneratorMultiblockHelper.outputToHatch(worldObj,
 					CLGReference.CLGPattern, output, countOfHatch, xCoord,
 					yCoord, zCoord, 1, 1, 0, formed);
@@ -132,21 +131,11 @@ public class TileEntityCLGController extends TileEntityBase implements
 	}
 
 	public void updateState() {
-		if (doWait) {
-			if (toNextUpdate != 0) {
-				toNextUpdate--;
-				return;
-			} else {
-				toNextUpdate = 20;
-			}
-		}
-		if (forceNotFormed)
-			formed = false;
 		if (worldObj.isRemote)
 			return;
 		if (CLGReference.mustUseInNether) {
 			formed = this.isStructureComplete()
-					&& worldObj.provider.isHellWorld // must use in nether
+					&& worldObj.provider.isHellWorld // must in nether
 					&& !this.worldObj.isBlockIndirectlyGettingPowered(xCoord,
 							yCoord, zCoord);
 		} else {
