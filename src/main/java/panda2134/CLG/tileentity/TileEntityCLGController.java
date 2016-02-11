@@ -89,7 +89,6 @@ public class TileEntityCLGController extends TileEntityBase implements
 
 	@Override
 	public void update() {
-
 		this.updateEntity();
 	}
 
@@ -121,8 +120,6 @@ public class TileEntityCLGController extends TileEntityBase implements
 				this.output = this.outputLimit;
 			else
 				this.output = this.storage;
-			// output
-			// TODO
 
 			this.storage -= GeneratorMultiblockHelper.outputToHatch(worldObj,
 					CLGReference.CLGPattern, output, countOfHatch, xCoord,
@@ -133,6 +130,10 @@ public class TileEntityCLGController extends TileEntityBase implements
 
 	public void updateState() {
 		if (worldObj.isRemote)
+			return;
+		if (timeToCheck++ == 20)
+			timeToCheck = 0;
+		else
 			return;
 		if (CLGReference.mustUseInNether) {
 			formed = this.isStructureComplete()
