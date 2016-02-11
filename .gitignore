@@ -61,7 +61,7 @@ $RECYCLE.BIN/
 ./libs/
 
 ./conf/
-.gradlew/2.0/taskArtifacts/fileHashes.bin
+.gradlew/
 ./eclipse/
 ./MinecraftForge-License.txt
 ./firebox.zip
