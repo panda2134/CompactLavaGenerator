@@ -89,6 +89,7 @@ public class TileEntityCLGController extends TileEntityBase implements
 
 	@Override
 	public void update() {
+
 		this.updateEntity();
 	}
 
