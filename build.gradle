@@ -24,11 +24,7 @@ repositories {
     }
 }
 
-<<<<<<< HEAD
 version = "1.0.5"
-=======
-version = "1.0.4"
->>>>>>> refs/remotes/origin/master
 group= "panda2134.CLG" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CLG"
 
