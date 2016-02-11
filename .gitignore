@@ -1,4 +1,4 @@
-*.class
+﻿*.class
 hs_err_pid*
 .mtj.tmp/
 
@@ -57,7 +57,14 @@ $RECYCLE.BIN/
 ~*
 *.swp
 .*.swp
-/lib/
-/libs/
-/conf/
-/IE配方.txt
+./lib/
+./libs/
+
+./conf/
+.gradlew/2.0/taskArtifacts/fileHashes.bin
+./eclipse/
+./MinecraftForge-License.txt
+./firebox.zip
+./MinecraftForge-Credits.txt
+./CREDITS-fml.txt
+./IE配方.txt
