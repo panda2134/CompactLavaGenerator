@@ -12,3 +12,4 @@ tile.CLGController.notok.3=-把发电机放在下界
 tile.CLGController.notok.4=-不要给它红石信号
 tile.CLGController.info=发电量:%d,存储:%d,输出:%d
 tile.CLGEnergyHatch.info=能量单位:%s
+tile.CLGController.cantplace=你发现把两个发电机控制器放置得太近将会导致它们互相干扰。

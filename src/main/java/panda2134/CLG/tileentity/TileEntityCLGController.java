@@ -15,7 +15,7 @@ public class TileEntityCLGController extends TileEntityBase implements
 		IUpdatePlayerListBox {
 	public double generating, outputLimit, output, storage;
 	public int timeToCheck;
-	public boolean init;
+	public boolean deconstruct = false;
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
@@ -99,6 +99,8 @@ public class TileEntityCLGController extends TileEntityBase implements
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			return;
 		} else {
+			if (deconstruct)
+				return;
 			this.updateState();
 			// set generators
 			this.generating = GeneratorMultiblockHelper.countBlocksInRange(

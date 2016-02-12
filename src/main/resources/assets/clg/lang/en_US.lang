@@ -12,3 +12,4 @@ tile.CLGController.notok.3=-Put it in Nether
 tile.CLGController.notok.4=-Don't give it a redstone signal
 tile.CLGController.info=Generating:%d,Storage:%d,Output:%d
 tile.CLGEnergyHatch.info=Unit:%s
+tile.CLGController.cantplace=You realized that the generators won't work if the controllers are too close.

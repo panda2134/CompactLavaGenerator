@@ -1,6 +1,7 @@
 package panda2134.CLG.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
@@ -10,7 +11,7 @@ import panda2134.CLG.CLGMod;
 import panda2134.CLG.tileentity.TileEntityCLGPump;
 import panda2134.CLG.util.CLGReference;
 
-public class CLGLavaPump extends Block {
+public class CLGLavaPump extends Block implements ITileEntityProvider {
 
 	public IIcon[] icons = new IIcon[2];
 
@@ -40,6 +41,17 @@ public class CLGLavaPump extends Block {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see net.minecraft.block.Block#isOpaqueCube()
+	 */
+	@Override
+	public boolean isOpaqueCube() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.minecraft.block.Block#getMobilityFlag()
 	 */
 	@Override
@@ -48,14 +60,10 @@ public class CLGLavaPump extends Block {
 	}
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * net.minecraft.block.Block#createTileEntity(net.minecraft.world.World,
-	 * int)
+	 * @Override public int getRenderType() { return -1; }
 	 */
 	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
+	public TileEntity createNewTileEntity(World world, int metadata) {
 		return new TileEntityCLGPump();
 	}
 

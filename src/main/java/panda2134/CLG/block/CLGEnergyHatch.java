@@ -11,11 +11,28 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import panda2134.CLG.CLGMod;
 import panda2134.CLG.tileentity.TileEntityEnergyHatch;
 import panda2134.CLG.util.CLGReference;
 
 public class CLGEnergyHatch extends Block implements ITileEntityProvider {
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.minecraft.block.Block#rotateBlock(net.minecraft.world.World,
+	 * int, int, int, net.minecraftforge.common.util.ForgeDirection)
+	 */
+	@Override
+	public boolean rotateBlock(World worldObj, int x, int y, int z,
+			ForgeDirection axis) {
+		int metadata = worldObj.getBlockMetadata(x, y, z);
+		metadata = ForgeDirection.getOrientation(metadata).getRotation(axis)
+				.ordinal();
+		worldObj.setBlockMetadataWithNotify(x, y, z, metadata, 2);
+		return true;
+	}
 
 	public IIcon[] icons = new IIcon[2];
 
