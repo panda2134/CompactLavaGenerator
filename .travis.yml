@@ -4,3 +4,9 @@ jdk:
 
 install: bash gradlew setupCiWorkspace
 script: bash gradlew build
+cache:
+  directories:
+    - '$HOME/.m2'
+    - '$HOME/.gradle'
+before_cache:
+    - rm -f $HOME/.gradle/caches/*/*.lock
