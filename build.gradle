@@ -18,8 +18,8 @@ buildscript {
 apply plugin: 'forge'
 
 def getVersionAppendage(){
-  if(System.env.BUILD_NUMBER)
-    return "."+System.env.BUILD_NUMBER
+  if(System.env.BUILD_ID)
+    return "."+System.env.BUILD_ID
   return ""
 }
 
