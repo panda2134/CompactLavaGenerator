@@ -1,4 +1,4 @@
-# CompactLavaGenerator [![Build Status](https://travis-ci.org/panda2134/CompactLavaGenerator.svg?branch=master)](https://travis-ci.org/panda2134/CompactLavaGenerator)
+# CompactLavaGenerator [![Build Status](https://drone.io/github.com/panda2134/CompactLavaGenerator/status.png)](https://drone.io/github.com/panda2134/CompactLavaGenerator/latest)
 A mod for Minecraft
 
 This mod adds a multiblock lava generator.It's very expensive but it generates 
