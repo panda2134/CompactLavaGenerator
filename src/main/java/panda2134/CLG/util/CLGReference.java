@@ -13,6 +13,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
+
 public class CLGReference {
 	public static CLGReference INSTANCE = new CLGReference();
 
