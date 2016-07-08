@@ -65,3 +65,7 @@ processResources
         exclude 'mcmod.info'
     }
 }
+sourceSets {
+    main { output.resourcesDir = output.classesDir }
+}
+idea { module { inheritOutputDirs = true } }
