@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 def getVersionAppendage(){
   if(System.env.BUILD_ID)
-    return "."+System.env.BUILD_ID
+    return "_build"+System.env.BUILD_ID
   return ""
 }
 
