@@ -30,7 +30,7 @@ repositories {
     }
 }
 
-version = "2.0.0"+getVersionAppendage()
+version = "2.0.1"+getVersionAppendage()
 group= "panda2134.CLG" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CLG"
 
