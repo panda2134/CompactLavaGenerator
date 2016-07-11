@@ -3,6 +3,8 @@ package panda2134.CLG;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import panda2134.CLG.init.Blocks;
 import panda2134.CLG.init.Items;
 import panda2134.CLG.init.TileEntities;
@@ -23,6 +25,8 @@ public class CLGMod {
 
 	@Mod.Instance(CLGReference.modid)
 	public static CLGMod INSTANCE;
+
+	public static final Logger logger = LogManager.getLogger(CLGReference.modid);
 
 	public static CreativeTabs tabCLG = new CreativeTabs("clg") {
 		@Override
