@@ -6,12 +6,15 @@ import factorization.api.IChargeConductor;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySource;
+import ic2.core.IC2;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
+import panda2134.CLG.CLGMod;
 import panda2134.CLG.integration.EnergySwitch;
 import panda2134.CLG.integration.EnergyUnit;
 import panda2134.CLG.integration.FZModule;
@@ -33,9 +36,10 @@ import cpw.mods.fml.common.Optional.Method;
 		@Interface(iface = "cofh.api.energy.IEnergyHandler", modid = Mods.IDs.cofhApiEnergy),
 		@Interface(iface = "factorization.api.IChargeConductor", modid = Mods.IDs.fz) })
 public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
-		IEnergyConnection, IEnergyHandler, IChargeConductor {
+		IEnergyConnection, IEnergyHandler, IChargeConductor, IUpdatePlayerListBox {
 
 	private boolean init;
+    private boolean addedToIC2EnergyNet=false;
 	public double energyToOutput;
 	public EnergyUnit unit;
 	public Object charge;
@@ -100,11 +104,16 @@ public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
 		return 3;
 	}
 
-	@Override
+    @Override
+    public void update() {
+        this.updateEntity();
+    }
+
+    @Override
 	public void updateEntity() {
 		if (!init) {
 			init = true;
-			this.doInit();
+			this.doInit();//TODO:Player range & world?
 			return;
 		}
 		if (Mods.Factorization.available)
@@ -119,7 +128,7 @@ public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
 			return;
 		if (Mods.IC2.available) {
 			// ic2 compat
-			loadTile();
+			onLoaded();
 		}
 
 		if (unit == null)
@@ -128,29 +137,43 @@ public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
 		worldObj.notifyBlockChange(xCoord, yCoord, zCoord, getBlockType());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.tileentity.TileEntity#invalidate()
-	 */
+    /**
+     * Called when the chunk this TileEntity is on is Unloaded.
+     */
+    @Override
+    public void onChunkUnload() {
+        if(!CLGReference.isServer())
+            return;
+        if(Mods.IC2.available)
+            this.onUnloaded();
+        super.onChunkUnload();
+    }
+
+
 	@Override
 	public void invalidate() {
 		if (!CLGReference.isServer())
 			return;
 		if (Mods.IC2.available)
-			unloadTile();
+			onUnloaded();
 		super.invalidate();
 	}
 
-	@Method(modid = Mods.IDs.ic2api)
-	public void loadTile() {
-		MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+    @Method(modid = Mods.IDs.ic2api)
+	public void onLoaded() {
+        if(IC2.platform.isSimulating()) {
+            MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+            this.addedToIC2EnergyNet = true;
+        }
 	}
 
 	@Method(modid = Mods.IDs.ic2api)
-	public void unloadTile() {
-		MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
-	}
+	public void onUnloaded() {
+        if(IC2.platform.isSimulating() && this.addedToIC2EnergyNet) {
+            MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
+            this.addedToIC2EnergyNet=false;
+        }
+    }
 
 	@Override
 	@Method(modid = Mods.IDs.ic2api)
@@ -159,7 +182,7 @@ public class TileEntityEnergyHatch extends TileEntity implements IEnergySource,
 			this.energyToOutput = 0;
 	}
 
-	public void displayInfoOnChat(EntityPlayer player) {
+	private void displayInfoOnChat(EntityPlayer player) {
 		player.addChatComponentMessage(new ChatComponentTranslation(
 				"tile.CLGEnergyHatch.info", unit.unit)
 				.setChatStyle(ChatStyles.info));
