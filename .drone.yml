@@ -10,8 +10,8 @@ pipeline:
         # Change the repository name in the configuration.yml to the the REPOSITORY_KEY .
       - sed -i 's,REPOSITORY_KEY,'"$REPOSITORY_KEY"',g' configuration.yml
          # Run the gradle command with the CLI
-      - ./jfrog rt gradle "clean artifactoryPublish -b build.gradle" configuration.yml 
+      - ./jfrog rt gradle "clean artifactoryPublish -b build.gradle" configuration.yml --build-name=CLG
         # Collect the environment variables with bce command
-      - ./jfrog rt bce Drone-Gradle-Demo 1.1.0
+      - ./jfrog rt bce CLG 
         # Publish the build with bp command
-      - ./jfrog rt bp Drone-Gradle-Demo 1.1.0
+      - ./jfrog rt bp CLG
